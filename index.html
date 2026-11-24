@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vocal DNA Studio · Descubre el ADN de tu voz</title>
+<meta name="description" content="Escanea tu voz gratis desde el móvil, descubre tu tipo de voz y tu potencial, canta sobre bases originales libres de derechos y descarga tu pista afinada y mezclada para TikTok, Reels y Shorts.">
+<meta name="theme-color" content="#07080b">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vocal DNA Studio · Descubre el ADN de tu voz">
+<meta property="og:description" content="Escáner vocal gratuito, bases originales libres de derechos y autoafinado en tu móvil.">
+<meta property="og:site_name" content="Vocal DNA Studio">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Vocal DNA Studio","applicationCategory":"MultimediaApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"publisher":{"@type":"Organization","name":"Community16 LLC"},"inLanguage":["es","en"]}
+</script>
+<style>
+:root{
+  --bg:#07080b;--panel:#0e1117;--panel2:#141922;--line:#222a36;--line2:#2d3746;
+  --text:#e9eef6;--muted:#8d97a9;--dim:#5d6778;
+  --pink:#ff2e7e;--cyan:#22d3ee;--gold:#f5b942;--green:#3ddc84;--red:#ff4d4d;
+  --grad:linear-gradient(135deg,var(--pink),#a855f7 50%,var(--cyan));
+  --r:16px;--pad:clamp(16px,4vw,56px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font:15px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;overflow-x:hidden}
+a{color:var(--cyan);text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+.wrap{width:100%;max-width:1680px;margin:0 auto;padding:0 var(--pad)}
+.mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+.muted{color:var(--muted)}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(7,8,11,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.hbar{display:flex;align-items:center;gap:18px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em;font-size:18px;color:var(--text)}
+.logo svg{width:34px;height:34px}
+.logo b{font-weight:800}
+.logo span{font-weight:500;color:var(--muted)}
+nav.main{display:flex;gap:4px;margin-left:auto}
+nav.main a{color:var(--muted);padding:8px 12px;border-radius:10px;font-weight:600;font-size:14px}
+nav.main a:hover,nav.main a.on{color:var(--text);background:var(--panel2)}
+.lang{display:flex;border:1px solid var(--line2);border-radius:10px;overflow:hidden}
+.lang button{padding:6px 10px;font-size:12px;font-weight:700;color:var(--muted)}
+.lang button.on{background:var(--text);color:#000}
+.burger{display:none;width:40px;height:40px;border-radius:10px;border:1px solid var(--line2)}
+@media(max-width:860px){
+  nav.main{position:fixed;inset:64px 0 auto 0;flex-direction:column;background:var(--bg);border-bottom:1px solid var(--line);padding:10px var(--pad) 18px;display:none}
+  nav.main.open{display:flex}
+  nav.main a{padding:12px}
+  .burger{display:grid;place-items:center;margin-left:auto}
+  .lang{margin-left:0}
+}
+
+/* hero */
+.hero{position:relative;padding:clamp(48px,9vw,120px) 0 clamp(40px,6vw,80px);overflow:hidden}
+.hero:before{content:"";position:absolute;inset:-40% -10% auto -10%;height:120%;background:radial-gradient(ellipse at 20% 30%,rgba(255,46,126,.22),transparent 55%),radial-gradient(ellipse at 80% 20%,rgba(34,211,238,.18),transparent 55%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,5vw,80px);align-items:center}
+@media(max-width:960px){.hero .wrap{grid-template-columns:1fr}}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line2);padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.02)}
+.rec-dot{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red);animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.25}}
+h1{font-size:clamp(38px,6.4vw,84px);line-height:.98;letter-spacing:-.045em;font-weight:850;margin:18px 0 18px}
+.lead{font-size:clamp(16px,1.6vw,20px);color:#c3ccda;max-width:640px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;border-radius:14px;font-weight:750;font-size:15px;transition:transform .15s,box-shadow .2s,background .2s;white-space:nowrap}
+.btn:active{transform:scale(.97)}
+.btn.primary{background:var(--grad);color:#fff;box-shadow:0 10px 30px -10px rgba(255,46,126,.6)}
+.btn.primary:hover{box-shadow:0 14px 40px -10px rgba(255,46,126,.85)}
+.btn.ghost{border:1px solid var(--line2);background:var(--panel)}
+.btn.ghost:hover{background:var(--panel2)}
+.btn.small{padding:9px 14px;font-size:13px;border-radius:11px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.stat{padding:12px 16px;border:1px solid var(--line);border-radius:14px;background:rgba(14,17,23,.7);min-width:140px}
+.stat b{display:block;font-size:22px;letter-spacing:-.02em}
+.stat small{color:var(--muted);font-size:12px}
+.console{border:1px solid var(--line2);border-radius:22px;background:linear-gradient(180deg,#121722,#0b0e14);padding:18px;box-shadow:0 30px 80px -30px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.04)}
+.console .top{display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+.eq{display:flex;align-items:flex-end;gap:4px;height:170px;padding:10px;border-radius:14px;background:#06080c;border:1px solid var(--line)}
+.eq i{flex:1;border-radius:3px;background:linear-gradient(0deg,var(--green),var(--gold) 70%,var(--red));opacity:.9;animation:eq 1.2s ease-in-out infinite alternate}
+@keyframes eq{0%{height:12%}100%{height:92%}}
+.knobs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+.knob{text-align:center;font-size:10px;color:var(--dim);letter-spacing:.08em;text-transform:uppercase}
+.knob div{width:44px;height:44px;margin:0 auto 6px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#3a4352,#141922);border:1px solid var(--line2);position:relative}
+.knob div:after{content:"";position:absolute;left:50%;top:6px;width:2px;height:12px;background:var(--cyan);transform-origin:50% 16px;transform:translateX(-50%) rotate(var(--a,30deg));border-radius:2px}
+
+/* sections */
+section.block{padding:clamp(48px,7vw,96px) 0;border-top:1px solid var(--line)}
+.sh{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:28px}
+.sh h2{font-size:clamp(28px,3.6vw,46px);letter-spacing:-.035em;line-height:1.05;font-weight:820}
+.sh p{color:var(--muted);max-width:620px;margin-top:8px}
+.tag{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--pink);margin-bottom:10px;display:block}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:960px){.grid2{grid-template-columns:1fr}}
+
+/* scanner */
+.scan{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}
+@media(max-width:960px){.scan{grid-template-columns:1fr}}
+.scope{position:relative;padding:16px}
+.scope canvas{width:100%;height:280px;display:block;border-radius:12px;background:#05070a;border:1px solid var(--line)}
+.readout{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.ro{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.ro small{display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.ro b{font-size:22px;letter-spacing:-.02em}
+.cents{position:relative;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--red),var(--gold) 30%,var(--green) 45%,var(--green) 55%,var(--gold) 70%,var(--red));margin-top:8px}
+.cents i{position:absolute;top:-4px;width:3px;height:16px;background:#fff;border-radius:2px;left:50%;transition:left .08s}
+.recbox{padding:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px}
+.bigrec{position:relative;width:150px;height:150px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 40% 35%,#2a1220,#12070c);border:2px solid #3b1a28;box-shadow:0 0 0 10px rgba(255,46,126,.06);transition:box-shadow .3s}
+.bigrec:before{content:"";width:62px;height:62px;border-radius:50%;background:var(--pink);box-shadow:0 0 30px rgba(255,46,126,.7);transition:all .25s}
+.bigrec.on:before{width:46px;height:46px;border-radius:10px;background:var(--red)}
+.bigrec.on{box-shadow:0 0 0 14px rgba(255,46,126,.12),0 0 60px rgba(255,46,126,.35);animation:pulse 1.2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 22px rgba(255,46,126,.05),0 0 80px rgba(255,46,126,.25)}}
+.bigrec svg{position:absolute;inset:-8px;width:166px;height:166px;transform:rotate(-90deg)}
+.timer{font-size:28px;font-weight:800;letter-spacing:-.02em}
+.hint{font-size:13px;color:var(--muted);max-width:360px}
+.steps{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.steps span{font-size:12px;border:1px solid var(--line2);padding:5px 10px;border-radius:999px;color:var(--muted)}
+.steps span.on{border-color:var(--pink);color:var(--text)}
+
+.result{margin-top:20px;padding:clamp(18px,3vw,30px);display:none}
+.result.show{display:block;animation:rise .5s ease}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}}
+.res-grid{display:grid;grid-template-columns:240px 1fr;gap:28px;align-items:center}
+@media(max-width:720px){.res-grid{grid-template-columns:1fr;justify-items:center}}
+.gauge{position:relative;width:220px;height:220px}
+.gauge svg{width:100%;height:100%;transform:rotate(-90deg)}
+.gauge .v{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+.gauge .v b{font-size:64px;letter-spacing:-.05em;line-height:1}
+.gauge .v small{display:block;color:var(--muted);font-size:12px}
+.level{display:inline-block;font-weight:800;padding:6px 12px;border-radius:999px;background:rgba(255,46,126,.12);color:var(--pink);font-size:13px;margin-bottom:12px}
+.bars{display:grid;gap:12px;margin:14px 0}
+.bar label{display:flex;justify-content:space-between;font-size:13px;color:#c9d1de;margin-bottom:5px}
+.bar label span{color:var(--muted)}
+.bar div{height:9px;border-radius:5px;background:var(--panel2);overflow:hidden}
+.bar div i{display:block;height:100%;width:0;border-radius:5px;background:var(--grad);transition:width 1s cubic-bezier(.2,.8,.2,1)}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+.fact{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.fact small{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--dim)}
+.fact b{font-size:17px}
+.send{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;align-items:center}
+input[type=text]{background:var(--panel2);border:1px solid var(--line2);color:var(--text);border-radius:12px;padding:12px 14px;font:inherit;min-width:0}
+input[type=text]:focus{outline:2px solid var(--pink);outline-offset:1px}
+.note{font-size:12px;color:var(--muted)}
+.err{color:var(--red);font-size:13px;margin-top:8px}
+
+/* songs */
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:8px 14px;border-radius:999px;border:1px solid var(--line2);font-size:13px;font-weight:650;color:var(--muted);background:var(--panel)}
+.chip.on{background:var(--text);color:#000;border-color:var(--text)}
+.songs{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.song{padding:18px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;transition:border-color .2s,transform .2s}
+.song:hover{border-color:var(--line2);transform:translateY(-2px)}
+.song .art{height:86px;border-radius:12px;display:flex;align-items:flex-end;gap:3px;padding:10px;background:#06080c;border:1px solid var(--line);overflow:hidden}
+.song .art i{flex:1;border-radius:2px;opacity:.85}
+.song h3{font-size:18px;letter-spacing:-.02em;line-height:1.2}
+.meta{display:flex;flex-wrap:wrap;gap:6px}
+.meta span{font-size:11px;font-weight:700;padding:4px 8px;border-radius:7px;background:var(--panel2);color:#b6c0cf;border:1px solid var(--line)}
+.meta span.new{background:rgba(61,220,132,.12);color:var(--green);border-color:rgba(61,220,132,.3)}
+.song .acts{display:flex;gap:8px;margin-top:auto}
+.song.playing{border-color:var(--pink)}
+.more{text-align:center;margin-top:22px}
+
+/* studio */
+.studio{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
+@media(max-width:1000px){.studio{grid-template-columns:1fr}}
+.deck{padding:20px}
+.deck h3{font-size:22px;letter-spacing:-.02em}
+.ctrl{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:16px 0}
+.ctrl label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px;font-weight:600}
+.ctrl .box{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px}
+.ctrl output{float:right;color:var(--text);font-weight:700;font-size:12px}
+input[type=range]{width:100%;accent-color:var(--pink)}
+select{width:100%;background:var(--bg);color:var(--text);border:1px solid var(--line2);border-radius:10px;padding:9px}
+.lyrics{padding:22px;min-height:260px;display:flex;flex-direction:column;justify-content:center;gap:12px;background:radial-gradient(ellipse at 50% 0%,rgba(168,85,247,.12),transparent 60%),var(--panel)}
+.lyrics p{font-size:clamp(17px,2vw,24px);font-weight:700;letter-spacing:-.01em;color:var(--dim);transition:color .25s,transform .25s}
+.lyrics p.on{color:var(--text);transform:translateX(6px)}
+.lyrics p.on:before{content:"▸ ";color:var(--pink)}
+.transport{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.progress{height:6px;border-radius:3px;background:var(--panel2);overflow:hidden;margin:14px 0 6px}
+.progress i{display:block;height:100%;width:0;background:var(--grad)}
+.status{font-size:13px;color:var(--muted);min-height:20px}
+.mixer{margin-top:20px;padding:20px;display:none}
+.mixer.show{display:block;animation:rise .4s ease}
+audio{width:100%;margin:12px 0;filter:invert(.92) hue-rotate(180deg)}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--green)}
+.badge:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green)}
+
+/* ranking */
+.talent{padding:26px;display:flex;gap:22px;align-items:center;background:linear-gradient(135deg,rgba(245,185,66,.12),rgba(255,46,126,.08)),var(--panel);border-color:rgba(245,185,66,.3)}
+.talent .crown{font-size:46px}
+.talent h3{font-size:24px;letter-spacing:-.02em}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);padding:12px 14px;border-bottom:1px solid var(--line)}
+td{padding:12px 14px;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:0}
+td.pos{font-weight:800;color:var(--muted);width:50px}
+tr.top1 td.pos{color:var(--gold)}
+.empty{padding:40px 20px;text-align:center;color:var(--muted)}
+
+/* how + legal */
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.how .panel{padding:20px}
+.how b{display:block;font-size:30px;margin-bottom:4px}
+.how h4{font-size:16px;margin-bottom:6px}
+.how p{color:var(--muted);font-size:14px}
+details{border:1px solid var(--line);border-radius:14px;background:var(--panel);margin-bottom:10px}
+summary{cursor:pointer;padding:16px 18px;font-weight:700;list-style:none;display:flex;justify-content:space-between}
+summary:after{content:"+";color:var(--muted);font-size:20px;line-height:1}
+details[open] summary:after{content:"–"}
+details .in{padding:0 18px 18px;color:#c3ccda;font-size:14px}
+details .in p+p{margin-top:10px}
+
+footer{border-top:1px solid var(--line);padding:40px 0 60px;color:var(--muted);font-size:13px}
+.fgrid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:30px}
+@media(max-width:860px){.fgrid{grid-template-columns:1fr}}
+footer h5{color:var(--text);font-size:13px;margin-bottom:10px;letter-spacing:.06em;text-transform:uppercase}
+footer ul{list-style:none;display:grid;gap:6px}
+footer a{color:var(--muted)}
+footer a:hover{color:var(--text)}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(120px);background:var(--text);color:#000;padding:12px 18px;border-radius:12px;font-weight:700;font-size:14px;z-index:99;transition:transform .3s;max-width:92vw;text-align:center}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap hbar">
+    <a class="logo" href="#top" aria-label="Vocal DNA Studio">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff2e7e"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="#0f131b"/><path d="M20 10c0 14 24 14 24 22S20 40 20 54" fill="none" stroke="url(#lg)" stroke-width="5" stroke-linecap="round"/><path d="M44 10c0 14-24 14-24 22s24 8 24 22" fill="none" stroke="url(#lg)" stroke-width="5" stroke-linecap="round" opacity=".55"/><g stroke="#e8edf5" stroke-width="3" stroke-linecap="round"><path d="M25 19h14M23 45h18M28 32h8"/></g></svg>
+      <span><b class="grad-text">Vocal DNA</b> Studio</span>
+    </a>
+    <button class="burger" id="burger" aria-label="Menú">☰</button>
+    <nav class="main" id="nav">
+      <a href="#scanner" data-i18n="nav.scan">Escáner vocal</a>
+      <a href="#songs" data-i18n="nav.songs">Canciones</a>
+      <a href="#studio" data-i18n="nav.studio">Estudio</a>
+      <a href="#ranking" data-i18n="nav.rank">Ranking</a>
+      <a href="#legal" data-i18n="nav.faq">Ayuda</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button data-lang="es" class="on">ES</button><button data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><i class="rec-dot"></i><span data-i18n="hero.eyebrow">Estudio vocal gratuito · en tu móvil</span></span>
+      <h1><span data-i18n="hero.t1">Descubre el</span> <span class="grad-text" data-i18n="hero.t2">ADN de tu voz.</span></h1>
+      <p class="lead" data-i18n="hero.lead">Canta 15 segundos y conoce tu tipo de voz, tu afinación, tu rango y tu puntuación de potencial. Después canta sobre bases originales libres de derechos y descarga tu pista afinada y mezclada, lista para TikTok, Reels y Shorts.</p>
+      <div class="cta">
+        <a class="btn primary" href="#scanner" data-i18n="hero.cta">🎙️ Escanear mi voz gratis</a>
+        <a class="btn ghost" href="#songs" data-i18n="hero.cta2">Ver canciones del día</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b id="stSongs">—</b><small data-i18n="hero.s1">bases originales en catálogo</small></div>
+        <div class="stat"><b id="stNew">—</b><small data-i18n="hero.s2">nuevas hoy</small></div>
+        <div class="stat"><b id="stPeople">—</b><small data-i18n="hero.s3">voces en el ranking</small></div>
+        <div class="stat"><b>100%</b><small data-i18n="hero.s4">privado: tu voz no sale de tu móvil</small></div>
+      </div>
+    </div>
+    <div class="console" aria-hidden="true">
+      <div class="top"><span>VDNA · MASTER BUS</span><span class="mono">48 kHz · 24 bit</span></div>
+      <div class="eq" id="heroEq"></div>
+      <div class="knobs">
+        <div class="knob"><div style="--a:-40deg"></div>Pitch</div>
+        <div class="knob"><div style="--a:20deg"></div>EQ</div>
+        <div class="knob"><div style="--a:60deg"></div>Comp</div>
+        <div class="knob"><div style="--a:-10deg"></div>Reverb</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESCANER -->
+<section class="block" id="scanner">
+  <div class="wrap">
+    <div class="sh"><div><span class="tag" data-i18n="scan.tag">Módulo 1 · Detector de talento</span><h2 data-i18n="scan.title">Escáner de potencial vocal</h2><p data-i18n="scan.sub">Mide tu frecuencia fundamental, la estabilidad de tu afinación, tu rango y la pureza de tus armónicos. Todo se calcula dentro de tu móvil.</p></div></div>
+    <div class="scan">
+      <div class="panel scope">
+        <canvas id="scope" width="1200" height="560"></canvas>
+        <div class="readout">
+          <div class="ro"><small data-i18n="scan.note">Nota</small><b id="roNote">—</b></div>
+          <div class="ro"><small data-i18n="scan.freq">Frecuencia</small><b id="roHz" class="mono">— Hz</b></div>
+          <div class="ro"><small data-i18n="scan.tune">Afinación</small><b id="roCents" class="mono">—</b><div class="cents"><i id="centsNeedle"></i></div></div>
+        </div>
+      </div>
+      <div class="panel recbox">
+        <button class="bigrec" id="scanBtn" aria-label="Grabar">
+          <svg viewBox="0 0 166 166"><circle cx="83" cy="83" r="79" fill="none" stroke="#1f2633" stroke-width="4"/><circle id="ring" cx="83" cy="83" r="79" fill="none" stroke="url(#lg)" stroke-width="4" stroke-linecap="round" stroke-dasharray="496.4" stroke-dashoffset="496.4"/></svg>
+        </button>
+        <div class="timer mono" id="scanTimer">0:15</div>
+        <div class="steps"><span id="sp1" data-i18n="scan.st1">1 · Nota cómoda</span><span id="sp2" data-i18n="scan.st2">2 · Sube a lo más agudo</span><span id="sp3" data-i18n="scan.st3">3 · Baja a lo más grave</span></div>
+        <p class="hint" id="scanHint" data-i18n="scan.hint">Pulsa el botón rojo, canta una nota cómoda y mantenla, luego sube poco a poco hasta tu nota más aguda y baja hasta la más grave. Mejor en un sitio silencioso.</p>
+        <div class="err" id="scanErr"></div>
+      </div>
+    </div>
+
+    <div class="panel result" id="result">
+      <div class="res-grid">
+        <div class="gauge">
+          <svg viewBox="0 0 220 220"><circle cx="110" cy="110" r="96" fill="none" stroke="#1a202b" stroke-width="16"/><circle id="gArc" cx="110" cy="110" r="96" fill="none" stroke="url(#lg)" stroke-width="16" stroke-linecap="round" stroke-dasharray="603.2" stroke-dashoffset="603.2" style="transition:stroke-dashoffset 1.4s cubic-bezier(.2,.8,.2,1)"/></svg>
+          <div class="v"><div><b id="gVal">0</b><small data-i18n="res.of">de 100 · potencial</small></div></div>
+        </div>
+        <div>
+          <span class="level" id="resLevel"></span>
+          <div class="facts">
+            <div class="fact"><small data-i18n="res.type">Tipo de voz (orientativo)</small><b id="resType">—</b></div>
+            <div class="fact"><small data-i18n="res.range">Rango medido</small><b id="resRange">—</b></div>
+            <div class="fact"><small data-i18n="res.center">Nota central</small><b id="resCenter">—</b></div>
+          </div>
+          <div class="bars">
+            <div class="bar"><label><b data-i18n="res.m1">Afinación</b><span id="m1v"></span></label><div><i id="m1"></i></div></div>
+            <div class="bar"><label><b data-i18n="res.m2">Estabilidad</b><span id="m2v"></span></label><div><i id="m2"></i></div></div>
+            <div class="bar"><label><b data-i18n="res.m3">Rango vocal</b><span id="m3v"></span></label><div><i id="m3"></i></div></div>
+            <div class="bar"><label><b data-i18n="res.m4">Pureza armónica</b><span id="m4v"></span></label><div><i id="m4"></i></div></div>
+          </div>
+          <p class="note" id="resTip"></p>
+          <div class="send">
+            <a class="btn primary small" href="#songs" data-i18n="res.go">🎵 Elegir canción para mi voz</a>
+            <button class="btn ghost small" id="shareBtn" data-i18n="res.share">Compartir resultado</button>
+            <button class="btn ghost small" id="againBtn" data-i18n="res.again">Repetir escáner</button>
+          </div>
+          <div class="send" id="rankSend">
+            <input type="text" id="alias" maxlength="14" placeholder="Tu alias" data-i18n-ph="res.alias" aria-label="Alias">
+            <button class="btn ghost small" id="rankBtn" data-i18n="res.rank">🏆 Enviar al ranking</button>
+          </div>
+          <p class="note" id="rankNote" data-i18n="res.ranknote">Se envía por Telegram solo tu alias, tu puntuación y tu tipo de voz. Nunca tu grabación.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CANCIONES -->
+<section class="block" id="songs">
+  <div class="wrap">
+    <div class="sh">
+      <div><span class="tag" data-i18n="songs.tag">Módulo 2 · Catálogo propio</span><h2 data-i18n="songs.title">Canciones y bases originales</h2><p data-i18n="songs.sub">Nuestro motor compone cada día nuevas bases con acordes, ritmo, melodía guía y letra. Son 100% originales y puedes usarlas gratis en tus redes.</p></div>
+      <div class="chips" id="genreChips"></div>
+    </div>
+    <div class="songs" id="songList"><div class="empty" data-i18n="songs.loading">Cargando catálogo…</div></div>
+    <div class="more"><button class="btn ghost small" id="moreBtn" data-i18n="songs.more">Ver más canciones</button></div>
+  </div>
+</section>
+
+<!-- ESTUDIO -->
+<section class="block" id="studio">
+  <div class="wrap">
+    <div class="sh"><div><span class="tag" data-i18n="studio.tag">Módulo 3 · Autoafinado y mezcla</span><h2 data-i18n="studio.title">Tu estudio de grabación</h2><p data-i18n="studio.sub">Canta encima de la base. Al terminar, afinamos tu voz a la escala de la canción, la ecualizamos, le damos reverberación de estudio y la sincronizamos con el ritmo. Descárgala lista para publicar.</p></div></div>
+    <div class="studio">
+      <div class="panel deck">
+        <span class="badge" id="stBadge" data-i18n="studio.ready">Listo</span>
+        <h3 id="stTitle" style="margin-top:8px">—</h3>
+        <div class="meta" id="stMeta" style="margin-top:8px"></div>
+        <div class="ctrl">
+          <div class="box"><label><span data-i18n="studio.song">Canción</span></label><select id="stSelect"></select></div>
+          <div class="box"><label><span data-i18n="studio.key">Tono para tu voz</span> <output id="trOut">0</output></label><input type="range" id="transpose" min="-7" max="7" value="0"></div>
+          <div class="box"><label><span data-i18n="studio.len">Duración</span></label><select id="loops"><option value="1" data-i18n="studio.short">Corta (8 compases)</option><option value="2" selected data-i18n="studio.long">Completa (16 compases)</option></select></div>
+          <div class="box"><label><input type="checkbox" id="guide" checked> <span data-i18n="studio.guide">Melodía guía</span></label><label style="margin-top:8px"><input type="checkbox" id="phones" checked> <span data-i18n="studio.phones">Uso auriculares</span></label></div>
+        </div>
+        <div class="transport">
+          <button class="btn ghost" id="previewBtn" data-i18n="studio.listen">▶ Escuchar base</button>
+          <button class="btn primary" id="recBtn" data-i18n="studio.rec">● Grabar mi voz</button>
+        </div>
+        <div class="progress"><i id="stProg"></i></div>
+        <div class="status" id="stStatus" data-i18n="studio.tip">Consejo: usa auriculares para que la base no se cuele en tu grabación.</div>
+      </div>
+      <div class="panel lyrics" id="lyricsBox"><p class="muted" data-i18n="studio.nolyrics">Elige una canción para ver la letra.</p></div>
+    </div>
+
+    <div class="panel mixer" id="mixer">
+      <div class="sh" style="margin-bottom:10px"><div><span class="tag" data-i18n="mix.tag">Mezcla automática</span><h2 style="font-size:28px" data-i18n="mix.title">Tu pista está lista</h2></div></div>
+      <div class="ctrl">
+        <div class="box"><label><span data-i18n="mix.tune">Autoafinado</span> <output id="o_tune">75%</output></label><input type="range" id="k_tune" min="0" max="100" value="75"></div>
+        <div class="box"><label><span data-i18n="mix.speed">Naturalidad</span> <output id="o_speed">50%</output></label><input type="range" id="k_speed" min="0" max="100" value="50"></div>
+        <div class="box"><label><span data-i18n="mix.reverb">Reverberación</span> <output id="o_rev">30%</output></label><input type="range" id="k_rev" min="0" max="100" value="30"></div>
+        <div class="box"><label><span data-i18n="mix.voice">Volumen voz</span> <output id="o_voice">100%</output></label><input type="range" id="k_voice" min="20" max="160" value="100"></div>
+        <div class="box"><label><span data-i18n="mix.beat">Volumen base</span> <output id="o_beat">70%</output></label><input type="range" id="k_beat" min="0" max="140" value="70"></div>
+        <div class="box"><label><span data-i18n="mix.sync">Ajuste de sincronía</span> <output id="o_sync">0 ms</output></label><input type="range" id="k_sync" min="-250" max="250" step="5" value="0"></div>
+      </div>
+      <div class="transport">
+        <button class="btn ghost small" id="remixBtn" data-i18n="mix.apply">Aplicar cambios</button>
+        <button class="btn ghost small" id="rawBtn" data-i18n="mix.raw">Escuchar voz original</button>
+        <a class="btn primary small" id="dlBtn" download="vocal-dna.wav" data-i18n="mix.dl">⬇ Descargar pista (WAV)</a>
+      </div>
+      <audio id="mixAudio" controls></audio>
+      <p class="note" id="mixInfo"></p>
+      <p class="note" data-i18n="mix.lic">La base y la letra son de Community16 LLC (Vocal DNA Studio). Puedes publicar tu pista gratis en redes sociales mencionando a Vocal DNA Studio.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RANKING -->
+<section class="block" id="ranking">
+  <div class="wrap">
+    <div class="sh"><div><span class="tag" data-i18n="rank.tag">Módulo 4 · Talentos descubiertos</span><h2 data-i18n="rank.title">Ranking de voces</h2><p data-i18n="rank.sub">Se actualiza solo cada día. La mejor puntuación de las últimas 24 horas es el Talento Vocal del Día y se anuncia en nuestro canal de Telegram.</p></div><span class="note" id="rankUpd"></span></div>
+    <div class="panel talent" id="talentBox"></div>
+    <div class="panel" style="margin-top:16px;overflow-x:auto">
+      <table><thead><tr><th>#</th><th data-i18n="rank.alias">Alias</th><th data-i18n="rank.voice">Voz</th><th data-i18n="rank.score">Puntuación</th><th data-i18n="rank.date">Fecha</th></tr></thead><tbody id="rankBody"></tbody></table>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA + LEGAL -->
+<section class="block" id="legal">
+  <div class="wrap">
+    <div class="sh"><div><span class="tag" data-i18n="how.tag">Cómo funciona</span><h2 data-i18n="how.title">De tu voz a tu pista en 3 pasos</h2></div></div>
+    <div class="how">
+      <div class="panel"><b>🎙️</b><h4 data-i18n="how.h1">1. Escanea</h4><p data-i18n="how.p1">Canta unos segundos. Medimos tu voz con análisis de frecuencia en tiempo real.</p></div>
+      <div class="panel"><b>🎵</b><h4 data-i18n="how.h2">2. Elige base</h4><p data-i18n="how.p2">Escoge una canción del catálogo. Ajustamos el tono a tu rango automáticamente.</p></div>
+      <div class="panel"><b>🎚️</b><h4 data-i18n="how.h3">3. Graba y publica</h4><p data-i18n="how.p3">Afinamos, mezclamos y sincronizamos. Descarga tu pista y súbela a tus redes.</p></div>
+    </div>
+
+    <div style="margin-top:40px">
+      <details><summary data-i18n="faq.q1">¿Cómo se calcula mi puntuación?</summary><div class="in"><p data-i18n="faq.a1">Afinación (35%): lo cerca que quedan tus notas sostenidas de la nota exacta. Estabilidad (25%): lo firme que mantienes cada nota. Rango (20%): cuántos semitonos cubres (24 semitonos = máximo). Pureza armónica (20%): lo limpia y periódica que es tu señal de voz. Es una medida técnica orientativa, no un juicio artístico.</p></div></details>
+      <details><summary data-i18n="faq.q2">¿Se guarda o se envía mi voz?</summary><div class="in"><p data-i18n="faq.a2">No. Tu grabación se procesa únicamente dentro de tu navegador y desaparece al cerrar la página. Solo si decides enviar tu puntuación al ranking se envían, a través de Telegram, tu alias, tu puntuación y tu tipo de voz.</p></div></details>
+      <details><summary data-i18n="faq.q3">Licencia de las bases y canciones</summary><div class="in"><p data-i18n="faq.a3">Todas las bases, melodías y letras generadas por Vocal DNA Studio son obras originales propiedad de Community16 LLC. Te concedemos una licencia gratuita, mundial y no exclusiva para usarlas en tus publicaciones de redes sociales (TikTok, Instagram Reels, YouTube Shorts, Facebook y similares), siempre mencionando a Vocal DNA Studio. No está permitido venderlas, registrarlas como propias, distribuirlas en plataformas de música ni reclamar derechos sobre ellas. Tu interpretación vocal es tuya.</p></div></details>
+      <details><summary data-i18n="faq.q4">Política de privacidad y cookies</summary><div class="in"><p data-i18n="faq.a4">Esta web no usa cookies ni rastreadores publicitarios. Solo guarda en tu navegador el idioma elegido y tu último resultado para recomendarte el tono. El ranking público solo muestra alias, puntuación, tipo de voz y fecha; tu identificador de Telegram se guarda cifrado e irreversible para evitar duplicados. Puedes pedir que borremos tu entrada escribiendo al correo de contacto.</p><p data-i18n="faq.a4b">La medición de visitas, si se activa, se hace con Cloudflare Web Analytics, que no usa cookies ni guarda datos personales.</p></div></details>
+      <details><summary data-i18n="faq.q5">Aviso legal y términos de uso</summary><div class="in"><p data-i18n="faq.a5">Titular: Community16 LLC · Albuquerque, Nuevo México, Estados Unidos · Contacto: community16jalda@gmail.com. El servicio es gratuito y se ofrece tal cual. Los resultados del escáner son orientativos. Al usar la web aceptas no subir contenido ilegal ni de terceros sin permiso.</p></div></details>
+      <details><summary data-i18n="faq.q6">Mi micrófono no funciona</summary><div class="in"><p data-i18n="faq.a6">Acepta el permiso de micrófono cuando el navegador te lo pida. En iPhone usa Safari o Chrome actualizados. Si lo rechazaste, actívalo en los ajustes del navegador para esta web y recarga la página.</p></div></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap fgrid">
+    <div>
+      <a class="logo" href="#top"><span><b class="grad-text">Vocal DNA</b> Studio</span></a>
+      <p style="margin-top:10px" data-i18n="foot.about">Descubrimiento de talento vocal, bases originales y autoafinado gratis en tu navegador.</p>
+      <p style="margin-top:10px" id="tgFoot"></p>
+      <p style="margin-top:14px">© <span id="yr"></span> Community16 LLC · Albuquerque, NM, USA</p>
+    </div>
+    <div>
+      <h5 data-i18n="foot.nav">Secciones</h5>
+      <ul><li><a href="#scanner" data-i18n="nav.scan">Escáner vocal</a></li><li><a href="#songs" data-i18n="nav.songs">Canciones</a></li><li><a href="#studio" data-i18n="nav.studio">Estudio</a></li><li><a href="#ranking" data-i18n="nav.rank">Ranking</a></li><li><a href="#legal" data-i18n="foot.legal">Privacidad y aviso legal</a></li></ul>
+    </div>
+    <div>
+      <h5 data-i18n="foot.more">Más webs de Community16</h5>
+      <ul>
+        <li><a href="https://sportevlab.com" target="_blank" rel="noopener">SportEVLab</a></li>
+        <li><a href="https://equityintrinsic.com" target="_blank" rel="noopener">Equity Intrinsic</a></li>
+        <li><a href="https://lotopulse.com" target="_blank" rel="noopener">LotoPulse</a></li>
+        <li><a href="https://nexusterminalalerts.com" target="_blank" rel="noopener">Nexus Terminal</a></li>
+        <li><a href="https://dazmond.com" target="_blank" rel="noopener">DAZMOND &amp; Co.</a></li>
+        <li><a href="https://dazpremiumfit.com" target="_blank" rel="noopener">DAZ Premium Fit</a></li>
+        <li><a href="https://valmontco.com" target="_blank" rel="noopener">Valmont &amp; Co.</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+/* =========================================================
+   CONFIGURACION (lo unico que hay que tocar)
+   ========================================================= */
+const CONFIG = {
+  telegramBot: "",        // nombre del bot sin @, ej. "VocalDNAbot"
+  channelES: "",          // canal en espanol sin @, ej. "vocaldna"
+  channelEN: "",          // canal en ingles sin @, ej. "vocaldna_en"
+  cloudflareToken: ""     // token de Cloudflare Web Analytics (sin cookies)
+};
+
+/* =========================================================
+   IDIOMAS
+   ========================================================= */
+const I18N = {
+ es:{
+  "nav.scan":"Escáner vocal","nav.songs":"Canciones","nav.studio":"Estudio","nav.rank":"Ranking","nav.faq":"Ayuda",
+  "hero.eyebrow":"Estudio vocal gratuito · en tu móvil","hero.t1":"Descubre el","hero.t2":"ADN de tu voz.",
+  "hero.lead":"Canta 15 segundos y conoce tu tipo de voz, tu afinación, tu rango y tu puntuación de potencial. Después canta sobre bases originales libres de derechos y descarga tu pista afinada y mezclada, lista para TikTok, Reels y Shorts.",
+  "hero.cta":"🎙️ Escanear mi voz gratis","hero.cta2":"Ver canciones del día","hero.s1":"bases originales en catálogo","hero.s2":"nuevas hoy","hero.s3":"voces en el ranking","hero.s4":"privado: tu voz no sale de tu móvil",
+  "scan.tag":"Módulo 1 · Detector de talento","scan.title":"Escáner de potencial vocal","scan.sub":"Mide tu frecuencia fundamental, la estabilidad de tu afinación, tu rango y la pureza de tus armónicos. Todo se calcula dentro de tu móvil.",
+  "scan.note":"Nota","scan.freq":"Frecuencia","scan.tune":"Afinación","scan.st1":"1 · Nota cómoda","scan.st2":"2 · Sube a lo más agudo","scan.st3":"3 · Baja a lo más grave",
+  "scan.hint":"Pulsa el botón rojo, canta una nota cómoda y mantenla, luego sube poco a poco hasta tu nota más aguda y baja hasta la más grave. Mejor en un sitio silencioso.",
+  "res.of":"de 100 · potencial","res.type":"Tipo de voz (orientativo)","res.range":"Rango medido","res.center":"Nota central","res.m1":"Afinación","res.m2":"Estabilidad","res.m3":"Rango vocal","res.m4":"Pureza armónica",
+  "res.go":"🎵 Elegir canción para mi voz","res.share":"Compartir resultado","res.again":"Repetir escáner","res.alias":"Tu alias","res.rank":"🏆 Enviar al ranking",
+  "res.ranknote":"Se envía por Telegram solo tu alias, tu puntuación y tu tipo de voz. Nunca tu grabación.",
+  "songs.tag":"Módulo 2 · Catálogo propio","songs.title":"Canciones y bases originales","songs.sub":"Nuestro motor compone cada día nuevas bases con acordes, ritmo, melodía guía y letra. Son 100% originales y puedes usarlas gratis en tus redes.","songs.loading":"Cargando catálogo…","songs.more":"Ver más canciones",
+  "studio.tag":"Módulo 3 · Autoafinado y mezcla","studio.title":"Tu estudio de grabación","studio.sub":"Canta encima de la base. Al terminar, afinamos tu voz a la escala de la canción, la ecualizamos, le damos reverberación de estudio y la sincronizamos con el ritmo. Descárgala lista para publicar.",
+  "studio.ready":"Listo","studio.song":"Canción","studio.key":"Tono para tu voz","studio.len":"Duración","studio.short":"Corta (8 compases)","studio.long":"Completa (16 compases)","studio.guide":"Melodía guía","studio.phones":"Uso auriculares",
+  "studio.listen":"▶ Escuchar base","studio.rec":"● Grabar mi voz","studio.tip":"Consejo: usa auriculares para que la base no se cuele en tu grabación.","studio.nolyrics":"Elige una canción para ver la letra.",
+  "mix.tag":"Mezcla automática","mix.title":"Tu pista está lista","mix.tune":"Autoafinado","mix.speed":"Naturalidad","mix.reverb":"Reverberación","mix.voice":"Volumen voz","mix.beat":"Volumen base","mix.sync":"Ajuste de sincronía",
+  "mix.apply":"Aplicar cambios","mix.raw":"Escuchar voz original","mix.dl":"⬇ Descargar pista (WAV)","mix.lic":"La base y la letra son de Community16 LLC (Vocal DNA Studio). Puedes publicar tu pista gratis en redes sociales mencionando a Vocal DNA Studio.",
+  "rank.tag":"Módulo 4 · Talentos descubiertos","rank.title":"Ranking de voces","rank.sub":"Se actualiza solo cada día. La mejor puntuación de las últimas 24 horas es el Talento Vocal del Día y se anuncia en nuestro canal de Telegram.",
+  "rank.alias":"Alias","rank.voice":"Voz","rank.score":"Puntuación","rank.date":"Fecha",
+  "how.tag":"Cómo funciona","how.title":"De tu voz a tu pista en 3 pasos","how.h1":"1. Escanea","how.p1":"Canta unos segundos. Medimos tu voz con análisis de frecuencia en tiempo real.","how.h2":"2. Elige base","how.p2":"Escoge una canción del catálogo. Ajustamos el tono a tu rango automáticamente.","how.h3":"3. Graba y publica","how.p3":"Afinamos, mezclamos y sincronizamos. Descarga tu pista y súbela a tus redes.",
+  "faq.q1":"¿Cómo se calcula mi puntuación?","faq.a1":"Afinación (35%): lo cerca que quedan tus notas sostenidas de la nota exacta. Estabilidad (25%): lo firme que mantienes cada nota. Rango (20%): cuántos semitonos cubres (24 semitonos = máximo). Pureza armónica (20%): lo limpia y periódica que es tu señal de voz. Es una medida técnica orientativa, no un juicio artístico.",
+  "faq.q2":"¿Se guarda o se envía mi voz?","faq.a2":"No. Tu grabación se procesa únicamente dentro de tu navegador y desaparece al cerrar la página. Solo si decides enviar tu puntuación al ranking se envían, a través de Telegram, tu alias, tu puntuación y tu tipo de voz.",
+  "faq.q3":"Licencia de las bases y canciones","faq.a3":"Todas las bases, melodías y letras generadas por Vocal DNA Studio son obras originales propiedad de Community16 LLC. Te concedemos una licencia gratuita, mundial y no exclusiva para usarlas en tus publicaciones de redes sociales (TikTok, Instagram Reels, YouTube Shorts, Facebook y similares), siempre mencionando a Vocal DNA Studio. No está permitido venderlas, registrarlas como propias, distribuirlas en plataformas de música ni reclamar derechos sobre ellas. Tu interpretación vocal es tuya.",
+  "faq.q4":"Política de privacidad y cookies","faq.a4":"Esta web no usa cookies ni rastreadores publicitarios. Solo guarda en tu navegador el idioma elegido y tu último resultado para recomendarte el tono. El ranking público solo muestra alias, puntuación, tipo de voz y fecha; tu identificador de Telegram se guarda cifrado e irreversible para evitar duplicados. Puedes pedir que borremos tu entrada escribiendo al correo de contacto.",
+  "faq.a4b":"La medición de visitas, si se activa, se hace con Cloudflare Web Analytics, que no usa cookies ni guarda datos personales.",
+  "faq.q5":"Aviso legal y términos de uso","faq.a5":"Titular: Community16 LLC · Albuquerque, Nuevo México, Estados Unidos · Contacto: community16jalda@gmail.com. El servicio es gratuito y se ofrece tal cual. Los resultados del escáner son orientativos. Al usar la web aceptas no subir contenido ilegal ni de terceros sin permiso.",
+  "faq.q6":"Mi micrófono no funciona","faq.a6":"Acepta el permiso de micrófono cuando el navegador te lo pida. En iPhone usa Safari o Chrome actualizados. Si lo rechazaste, actívalo en los ajustes del navegador para esta web y recarga la página.",
+  "foot.about":"Descubrimiento de talento vocal, bases originales y autoafinado gratis en tu navegador.","foot.nav":"Secciones","foot.legal":"Privacidad y aviso legal","foot.more":"Más webs de Community16",
+  /* dinamicos */
+  "d.listen":"▶ Escuchar","d.stop":"■ Parar","d.sing":"🎤 Cantar esta","d.new":"Nueva hoy","d.all":"Todas","d.bars":"compases",
+  "d.major":"mayor","d.minor":"menor","d.micerr":"No he podido usar el micrófono. Revisa el permiso del navegador.","d.nosupport":"Tu navegador no permite grabar audio. Prueba con Chrome o Safari actualizados.",
+  "d.tooshort":"No he oído suficiente voz. Acércate al micrófono y canta de forma continua.","d.listening":"Escuchando…","d.analyzing":"Analizando tu voz…",
+  "d.l1":"Voz en bruto","d.l2":"Buen potencial","d.l3":"Talento prometedor","d.l4":"Gran talento","d.l5":"Voz excepcional",
+  "d.tipLow":"Tu punto más fuerte: {best}. Para subir nota, trabaja la {worst} con escalas lentas y notas largas.",
+  "d.vt.bs":"Bajo","d.vt.br":"Barítono","d.vt.tn":"Tenor","d.vt.ct":"Contralto","d.vt.mz":"Mezzosoprano","d.vt.sp":"Soprano",
+  "d.semis":"semitonos","d.countin":"Prepárate… {n}","d.recording":"Grabando · canta ahora","d.processing":"Afinando y mezclando tu voz…","d.done":"¡Listo! Escucha y descarga tu pista.",
+  "d.synced":"Sincronía automática aplicada ({ms} ms).","d.trsug":"Tono ajustado a tu voz: {n} semitonos.",
+  "d.noRank":"Aún no hay voces en el ranking. ¡Haz tu escáner y sé la primera!","d.noTalent":"Hoy todavía no hay Talento Vocal del Día.","d.noTalentSub":"Haz tu escáner, envía tu puntuación y aparecerás aquí en la próxima actualización.",
+  "d.talent":"Talento Vocal del Día","d.updated":"Actualizado: {d}","d.aliasErr":"Escribe un alias de 2 a 14 letras o números (sin espacios).",
+  "d.rankSoon":"El envío al ranking se activa en cuanto abramos el bot de Telegram. Tu resultado queda guardado en este móvil.",
+  "d.shareText":"Mi voz ha sacado {s}/100 en Vocal DNA Studio ({t}). ¿Me superas?","d.copied":"Texto copiado. ¡Pégalo donde quieras!",
+  "d.tgJoin":"📣 Únete a nuestro canal de Telegram","d.rawStop":"■ Parar voz original","d.noSongs":"El catálogo se está generando. Vuelve en unos minutos.","d.loadErr":"No se pudo cargar el catálogo. Recarga la página.",
+  "d.mixinfo":"Duración {d} s · {sr} Hz · estéreo · 16 bits"
+ },
+ en:{
+  "nav.scan":"Vocal scan","nav.songs":"Songs","nav.studio":"Studio","nav.rank":"Ranking","nav.faq":"Help",
+  "hero.eyebrow":"Free vocal studio · on your phone","hero.t1":"Discover your","hero.t2":"vocal DNA.",
+  "hero.lead":"Sing for 15 seconds and find out your voice type, pitch accuracy, range and potential score. Then sing over original royalty-free beats and download your tuned, mixed track, ready for TikTok, Reels and Shorts.",
+  "hero.cta":"🎙️ Scan my voice for free","hero.cta2":"See today's songs","hero.s1":"original beats in the catalogue","hero.s2":"new today","hero.s3":"voices in the ranking","hero.s4":"private: your voice never leaves your phone",
+  "scan.tag":"Module 1 · Talent detector","scan.title":"Vocal potential scanner","scan.sub":"It measures your fundamental frequency, pitch stability, range and harmonic purity. Everything is calculated on your phone.",
+  "scan.note":"Note","scan.freq":"Frequency","scan.tune":"Tuning","scan.st1":"1 · Comfortable note","scan.st2":"2 · Go up to your highest","scan.st3":"3 · Go down to your lowest",
+  "scan.hint":"Tap the red button, sing a comfortable note and hold it, then slide slowly up to your highest note and down to your lowest. A quiet room works best.",
+  "res.of":"out of 100 · potential","res.type":"Voice type (approx.)","res.range":"Measured range","res.center":"Centre note","res.m1":"Pitch accuracy","res.m2":"Stability","res.m3":"Vocal range","res.m4":"Harmonic purity",
+  "res.go":"🎵 Pick a song for my voice","res.share":"Share result","res.again":"Scan again","res.alias":"Your nickname","res.rank":"🏆 Send to ranking",
+  "res.ranknote":"Only your nickname, score and voice type are sent via Telegram. Never your recording.",
+  "songs.tag":"Module 2 · Own catalogue","songs.title":"Original songs and beats","songs.sub":"Our engine composes new beats every day with chords, rhythm, guide melody and lyrics. They are 100% original and free to use on your socials.","songs.loading":"Loading catalogue…","songs.more":"Show more songs",
+  "studio.tag":"Module 3 · Auto-tune and mix","studio.title":"Your recording studio","studio.sub":"Sing over the beat. When you finish, we tune your voice to the song's scale, EQ it, add studio reverb and sync it to the rhythm. Download it ready to post.",
+  "studio.ready":"Ready","studio.song":"Song","studio.key":"Key for your voice","studio.len":"Length","studio.short":"Short (8 bars)","studio.long":"Full (16 bars)","studio.guide":"Guide melody","studio.phones":"I'm using headphones",
+  "studio.listen":"▶ Play beat","studio.rec":"● Record my voice","studio.tip":"Tip: use headphones so the beat doesn't leak into your recording.","studio.nolyrics":"Pick a song to see the lyrics.",
+  "mix.tag":"Automatic mix","mix.title":"Your track is ready","mix.tune":"Auto-tune","mix.speed":"Naturalness","mix.reverb":"Reverb","mix.voice":"Voice volume","mix.beat":"Beat volume","mix.sync":"Sync adjust",
+  "mix.apply":"Apply changes","mix.raw":"Play original voice","mix.dl":"⬇ Download track (WAV)","mix.lic":"The beat and lyrics belong to Community16 LLC (Vocal DNA Studio). You may post your track for free on social media crediting Vocal DNA Studio.",
+  "rank.tag":"Module 4 · Discovered talent","rank.title":"Voice ranking","rank.sub":"Updated automatically every day. The best score of the last 24 hours becomes the Vocal Talent of the Day and is announced on our Telegram channel.",
+  "rank.alias":"Nickname","rank.voice":"Voice","rank.score":"Score","rank.date":"Date",
+  "how.tag":"How it works","how.title":"From your voice to your track in 3 steps","how.h1":"1. Scan","how.p1":"Sing for a few seconds. We measure your voice with real-time frequency analysis.","how.h2":"2. Pick a beat","how.p2":"Choose a song from the catalogue. We automatically shift the key to your range.","how.h3":"3. Record and post","how.p3":"We tune, mix and sync. Download your track and upload it to your socials.",
+  "faq.q1":"How is my score calculated?","faq.a1":"Pitch accuracy (35%): how close your held notes are to the exact note. Stability (25%): how steadily you hold each note. Range (20%): how many semitones you cover (24 semitones = maximum). Harmonic purity (20%): how clean and periodic your voice signal is. It is an approximate technical measure, not an artistic judgement.",
+  "faq.q2":"Is my voice stored or sent?","faq.a2":"No. Your recording is processed only inside your browser and disappears when you close the page. Only if you choose to send your score to the ranking are your nickname, score and voice type sent via Telegram.",
+  "faq.q3":"Licence for the beats and songs","faq.a3":"All beats, melodies and lyrics generated by Vocal DNA Studio are original works owned by Community16 LLC. We grant you a free, worldwide, non-exclusive licence to use them in your social media posts (TikTok, Instagram Reels, YouTube Shorts, Facebook and similar), always crediting Vocal DNA Studio. You may not sell them, register them as your own, distribute them on music platforms or claim rights over them. Your vocal performance is yours.",
+  "faq.q4":"Privacy and cookie policy","faq.a4":"This website uses no cookies or advertising trackers. It only stores your chosen language and your last result in your browser to recommend a key. The public ranking only shows nickname, score, voice type and date; your Telegram ID is stored as an irreversible hash to avoid duplicates. You can ask us to delete your entry by writing to the contact email.",
+  "faq.a4b":"Visit measurement, if enabled, uses Cloudflare Web Analytics, which uses no cookies and stores no personal data.",
+  "faq.q5":"Legal notice and terms of use","faq.a5":"Owner: Community16 LLC · Albuquerque, New Mexico, United States · Contact: community16jalda@gmail.com. The service is free and provided as is. Scanner results are approximate. By using the site you agree not to upload illegal content or third-party content without permission.",
+  "faq.q6":"My microphone doesn't work","faq.a6":"Accept the microphone permission when your browser asks. On iPhone use an up-to-date Safari or Chrome. If you denied it, enable it in your browser settings for this site and reload the page.",
+  "foot.about":"Vocal talent discovery, original beats and free auto-tune in your browser.","foot.nav":"Sections","foot.legal":"Privacy and legal notice","foot.more":"More Community16 websites",
+  "d.listen":"▶ Play","d.stop":"■ Stop","d.sing":"🎤 Sing this","d.new":"New today","d.all":"All","d.bars":"bars",
+  "d.major":"major","d.minor":"minor","d.micerr":"I couldn't access the microphone. Check your browser permission.","d.nosupport":"Your browser can't record audio. Try an up-to-date Chrome or Safari.",
+  "d.tooshort":"I didn't hear enough voice. Move closer to the mic and sing continuously.","d.listening":"Listening…","d.analyzing":"Analysing your voice…",
+  "d.l1":"Raw voice","d.l2":"Good potential","d.l3":"Promising talent","d.l4":"Great talent","d.l5":"Exceptional voice",
+  "d.tipLow":"Your strongest point: {best}. To score higher, work on your {worst} with slow scales and long notes.",
+  "d.vt.bs":"Bass","d.vt.br":"Baritone","d.vt.tn":"Tenor","d.vt.ct":"Contralto","d.vt.mz":"Mezzo-soprano","d.vt.sp":"Soprano",
+  "d.semis":"semitones","d.countin":"Get ready… {n}","d.recording":"Recording · sing now","d.processing":"Tuning and mixing your voice…","d.done":"Done! Listen and download your track.",
+  "d.synced":"Automatic sync applied ({ms} ms).","d.trsug":"Key adjusted to your voice: {n} semitones.",
+  "d.noRank":"No voices in the ranking yet. Do your scan and be the first!","d.noTalent":"No Vocal Talent of the Day yet today.","d.noTalentSub":"Do your scan, send your score and you'll appear here in the next update.",
+  "d.talent":"Vocal Talent of the Day","d.updated":"Updated: {d}","d.aliasErr":"Enter a nickname of 2 to 14 letters or numbers (no spaces).",
+  "d.rankSoon":"Sending to the ranking opens as soon as our Telegram bot is live. Your result is saved on this phone.",
+  "d.shareText":"My voice scored {s}/100 on Vocal DNA Studio ({t}). Can you beat me?","d.copied":"Text copied. Paste it anywhere!",
+  "d.tgJoin":"📣 Join our Telegram channel","d.rawStop":"■ Stop original voice","d.noSongs":"The catalogue is being generated. Come back in a few minutes.","d.loadErr":"Couldn't load the catalogue. Please reload.",
+  "d.mixinfo":"Length {d} s · {sr} Hz · stereo · 16-bit"
+ }
+};
+let LANG = "es";
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+function t(k, vars){ let s = (I18N[LANG] && I18N[LANG][k]) || I18N.es[k] || k; if(vars) for(const v in vars) s = s.replace("{"+v+"}", vars[v]); return s; }
+function store(k,v){ try{ if(v===undefined) return localStorage.getItem(k); localStorage.setItem(k,v);}catch(e){ return null; } }
+function applyLang(l){
+  LANG = l; document.documentElement.lang = l;
+  $$("[data-i18n]").forEach(el => { const k = el.dataset.i18n; if(I18N[l][k]) el.textContent = I18N[l][k]; });
+  $$("[data-i18n-ph]").forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
+  $$(".lang button").forEach(b => b.classList.toggle("on", b.dataset.lang === l));
+  document.title = l === "es" ? "Vocal DNA Studio · Descubre el ADN de tu voz" : "Vocal DNA Studio · Discover your vocal DNA";
+  store("vdna_lang", l);
+  renderAll();
+}
+function toast(msg){ const el=$("#toast"); el.textContent=msg; el.classList.add("show"); clearTimeout(toast._t); toast._t=setTimeout(()=>el.classList.remove("show"),3200); }
+
+/* =========================================================
+   UTILIDADES MUSICALES
+   ========================================================= */
+const NOTES_EN = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"];
+const NOTES_ES = ["Do","Do#","Re","Re#","Mi","Fa","Fa#","Sol","Sol#","La","La#","Si"];
+const SCALES = { major:[0,2,4,5,7,9,11], minor:[0,2,3,5,7,8,10] };
+const mtof = m => 440 * Math.pow(2, (m - 69) / 12);
+const ftom = f => 69 + 12 * Math.log2(f / 440);
+function noteName(m){ m = Math.round(m); const n = (LANG==="es"?NOTES_ES:NOTES_EN)[((m%12)+12)%12]; return n + (Math.floor(m/12)-1); }
+function keyName(pc, mode){ const n=(LANG==="es"?NOTES_ES:NOTES_EN)[((pc%12)+12)%12]; return n+" "+t(mode==="minor"?"d.minor":"d.major"); }
+function fnv1a(str){ let h=0x811c9dc5; const b=new TextEncoder().encode(str); for(const x of b){ h^=x; h=Math.imul(h,0x01000193)>>>0; } return h.toString(36); }
+const clamp = (x,a,b) => Math.max(a, Math.min(b, x));
+
+/* Deteccion de tono (autocorrelacion normalizada, McLeod simplificado) */
+function detectPitch(buf, sr){
+  const ds = sr > 30000 ? 4 : 2, n = Math.floor(buf.length / ds), x = new Float32Array(n);
+  let rms = 0;
+  for(let i=0;i<n;i++){ let s=0; for(let j=0;j<ds;j++) s+=buf[i*ds+j]; s/=ds; x[i]=s; rms+=s*s; }
+  rms = Math.sqrt(rms / n);
+  if(rms < 0.006) return { f:0, c:0, rms };
+  const fs = sr / ds, minLag = Math.max(2, Math.floor(fs / 1100)), maxLag = Math.min(Math.floor(fs / 62), Math.floor(n / 2));
+  const nsdf = new Float32Array(maxLag + 2);
+  let m = 0; for(let i=0;i<n;i++) m += 2*x[i]*x[i];
+  for(let lag=0; lag<=maxLag+1; lag++){
+    if(lag>0) m -= x[lag-1]*x[lag-1] + x[n-lag]*x[n-lag];
+    let r = 0; for(let i=0;i<n-lag;i++) r += x[i]*x[i+lag];
+    nsdf[lag] = m > 0 ? 2*r/m : 0;
+  }
+  let lag = minLag; while(lag < maxLag && nsdf[lag] > 0) lag++;
+  const peaks = []; let best = -1, bestV = 0;
+  for(; lag < maxLag; lag++){
+    if(nsdf[lag] > 0 && nsdf[lag] >= nsdf[lag-1] && nsdf[lag] > nsdf[lag+1]){
+      peaks.push(lag); if(nsdf[lag] > bestV) bestV = nsdf[lag];
+    }
+  }
+  if(!peaks.length) return { f:0, c:0, rms };
+  for(const p of peaks){ if(nsdf[p] >= 0.86 * bestV){ best = p; break; } }
+  const a = nsdf[best-1], b = nsdf[best], c2 = nsdf[best+1], den = a - 2*b + c2;
+  const shift = den !== 0 ? 0.5 * (a - c2) / den : 0;
+  const f = fs / (best + shift);
+  if(f < 62 || f > 1100) return { f:0, c:0, rms };
+  return { f, c:b, rms };
+}
+
+/* =========================================================
+   AUDIO: contexto y sintetizador de bases
+   ========================================================= */
+let ACTX = null;
+function ctx(){
+  if(!ACTX){ const C = window.AudioContext || window.webkitAudioContext; if(!C) return null; ACTX = new C({ latencyHint:"interactive" }); }
+  if(ACTX.state === "suspended") ACTX.resume();
+  return ACTX;
+}
+const noiseCache = new WeakMap();
+function noise(c){ if(noiseCache.has(c)) return noiseCache.get(c); const b=c.createBuffer(1,c.sampleRate,c.sampleRate), d=b.getChannelData(0); for(let i=0;i<d.length;i++) d[i]=Math.random()*2-1; noiseCache.set(c,b); return b; }
+function env(g, t0, a, peak, d, sus, rel, end){
+  g.gain.setValueAtTime(0.0001, t0); g.gain.linearRampToValueAtTime(peak, t0+a);
+  g.gain.setTargetAtTime(sus, t0+a, d); g.gain.setTargetAtTime(0.0001, end, rel);
+}
+function kick(c, out, t){ const o=c.createOscillator(), g=c.createGain(); o.frequency.setValueAtTime(150,t); o.frequency.exponentialRampToValueAtTime(42,t+0.13); g.gain.setValueAtTime(0.95,t); g.gain.exponentialRampToValueAtTime(0.001,t+0.38); o.connect(g).connect(out); o.start(t); o.stop(t+0.4); }
+function snare(c, out, t){ const s=c.createBufferSource(); s.buffer=noise(c); const f=c.createBiquadFilter(); f.type="highpass"; f.frequency.value=1400; const g=c.createGain(); g.gain.setValueAtTime(0.42,t); g.gain.exponentialRampToValueAtTime(0.001,t+0.18); s.connect(f).connect(g).connect(out); s.start(t, Math.random()*0.5, 0.2);
+  const o=c.createOscillator(), g2=c.createGain(); o.type="triangle"; o.frequency.value=185; g2.gain.setValueAtTime(0.25,t); g2.gain.exponentialRampToValueAtTime(0.001,t+0.09); o.connect(g2).connect(out); o.start(t); o.stop(t+0.1); }
+function hat(c, out, t, v){ const s=c.createBufferSource(); s.buffer=noise(c); const f=c.createBiquadFilter(); f.type="highpass"; f.frequency.value=7500; const g=c.createGain(); g.gain.setValueAtTime(v||0.13,t); g.gain.exponentialRampToValueAtTime(0.001,t+0.05); s.connect(f).connect(g).connect(out); s.start(t, Math.random()*0.5, 0.06); }
+function voice(c, out, m, t, dur, type, vol, cutoff){
+  const g=c.createGain(), f=c.createBiquadFilter(); f.type="lowpass"; f.frequency.value=cutoff||2200; f.Q.value=0.7;
+  const oscs=[];
+  if(type==="pad"){ for(const d of [-7,7]){ const o=c.createOscillator(); o.type="sawtooth"; o.frequency.value=mtof(m); o.detune.value=d; oscs.push(o);} env(g,t,0.12,vol,0.4,vol*0.8,0.25,t+dur); }
+  else if(type==="keys"){ const o=c.createOscillator(); o.type="triangle"; o.frequency.value=mtof(m); const o2=c.createOscillator(); o2.type="sine"; o2.frequency.value=mtof(m)*2; oscs.push(o,o2); env(g,t,0.008,vol,0.35,vol*0.35,0.18,t+dur); }
+  else if(type==="pluck"){ const o=c.createOscillator(); o.type="square"; o.frequency.value=mtof(m); oscs.push(o); f.frequency.setValueAtTime(3200,t); f.frequency.exponentialRampToValueAtTime(500,t+0.25); env(g,t,0.004,vol,0.12,vol*0.15,0.08,t+dur); }
+  else if(type==="bass"){ const o=c.createOscillator(); o.type="triangle"; o.frequency.value=mtof(m); const o2=c.createOscillator(); o2.type="sine"; o2.frequency.value=mtof(m); oscs.push(o,o2); f.frequency.value=480; env(g,t,0.01,vol,0.2,vol*0.7,0.06,t+dur); }
+  else if(type==="guide"){ const o=c.createOscillator(); o.type="sine"; o.frequency.value=mtof(m); const o2=c.createOscillator(); o2.type="triangle"; o2.frequency.value=mtof(m); oscs.push(o,o2); env(g,t,0.02,vol,0.2,vol*0.75,0.06,t+dur); }
+  for(const o of oscs){ o.connect(f); o.start(t); o.stop(t+dur+1.2); }
+  f.connect(g).connect(out);
+}
+/* Programa la cancion entera. Devuelve la duracion en segundos. */
+function scheduleSong(c, dest, song, t0, o){
+  o = o || {}; const tr = o.transpose||0, loops = o.loops||2, step = 60/song.bpm/4, barLen = step*16;
+  const bus = c.createGain(); bus.gain.value = 0.8;
+  const comp = c.createDynamicsCompressor(); comp.threshold.value=-14; comp.ratio.value=3; comp.attack.value=0.01; comp.release.value=0.2;
+  bus.connect(comp).connect(dest);
+  const drums = c.createGain(); drums.gain.value = 0.9; drums.connect(bus);
+  const inst = c.createGain(); inst.gain.value = 0.55; inst.connect(bus);
+  const guide = c.createGain(); guide.gain.value = o.guide ? 0.5 : 0; guide.connect(bus);
+  const total = song.bars * loops;
+  for(let b=0;b<total;b++){
+    const tb = t0 + b*barLen, ch = song.chords[b % song.chords.length].map(x=>x+tr);
+    // acordes
+    if(song.sound==="pad"){ for(const m of ch) voice(c,inst,m+12,tb,barLen*0.98,"pad",0.07,1500); }
+    else if(song.sound==="keys"){ for(const beat of [0,8]) for(const m of ch) voice(c,inst,m+12,tb+beat*step,step*7.5,"keys",0.11); }
+    else { const arp=[ch[0]+12,ch[1]+12,ch[2]+12,ch[1]+12]; for(let s=0;s<16;s+=2) voice(c,inst,arp[(s/2)%4]+(s>=8?12:0),tb+s*step,step*1.8,"pluck",0.09); }
+    // bajo en los golpes de bombo
+    const kk = song.drums.kick;
+    for(let s=0;s<16;s++) if(kk[s]){ let len=1; while(s+len<16 && !kk[s+len]) len++; voice(c,inst,ch[0]-12,tb+s*step,step*Math.min(len,4)*0.95,"bass",0.32); }
+    // bateria
+    for(let s=0;s<16;s++){ const ts=tb+s*step;
+      if(song.drums.kick[s]) kick(c,drums,ts);
+      if(song.drums.snare[s]) snare(c,drums,ts);
+      if(song.drums.hat[s]) hat(c,drums,ts,(s%4===0)?0.14:0.09);
+    }
+  }
+  // melodia guia
+  for(let l=0;l<loops;l++) for(const n of song.melody){
+    voice(c,guide,n.n+tr,t0+(l*song.bars*16+n.s)*step,n.l*step*0.92,"guide",0.22);
+  }
+  return { duration: total*barLen, barLen, bus };
+}
+function click(c, out, t, hi){ const o=c.createOscillator(), g=c.createGain(); o.frequency.value=hi?1600:1100; g.gain.setValueAtTime(0.35,t); g.gain.exponentialRampToValueAtTime(0.001,t+0.06); o.connect(g).connect(out); o.start(t); o.stop(t+0.08); }
+
+/* =========================================================
+   DATOS
+   ========================================================= */
+let SONGS = [], RANK = null, GENRE = "all", SHOWN = 9, CUR = null, LAST_SCAN = null;
+try{ LAST_SCAN = JSON.parse(store("vdna_scan")||"null"); }catch(e){}
+async function loadData(){
+  try{
+    const [s, r] = await Promise.all([
+      fetch("data/generated_songs.json?v="+Date.now()).then(x=>x.json()),
+      fetch("data/vocal_ranking.json?v="+Date.now()).then(x=>x.json()).catch(()=>({entries:[]}))
+    ]);
+    SONGS = s.songs || []; RANK = r;
+    const today = SONGS.length ? SONGS[0].date : "";
+    $("#stSongs").textContent = SONGS.length;
+    $("#stNew").textContent = SONGS.filter(x=>x.date===today).length;
+    $("#stPeople").textContent = (r.entries||[]).length;
+    if(SONGS.length && !CUR) selectSong(SONGS[0].id, false);
+  }catch(e){ $("#songList").innerHTML = `<div class="empty">${t("d.loadErr")}</div>`; return; }
+  renderAll();
+}
+function renderAll(){ renderChips(); renderSongs(); renderStudio(); renderRanking(); renderTelegram(); if(LAST_SCAN && $("#result").classList.contains("show")) showResult(LAST_SCAN, false); }
+
+/* =========================================================
+   CATALOGO
+   ========================================================= */
+function renderChips(){
+  const gs = {}; SONGS.forEach(s => gs[s.genre] = s.genre_name);
+  const el = $("#genreChips"); el.innerHTML = "";
+  const mk = (k, label) => { const b=document.createElement("button"); b.className="chip"+(GENRE===k?" on":""); b.textContent=label; b.onclick=()=>{GENRE=k; SHOWN=9; renderChips(); renderSongs();}; el.appendChild(b); };
+  mk("all", t("d.all")); Object.keys(gs).sort().forEach(k => mk(k, gs[k][LANG]));
+}
+let PREVIEW = null;
+function stopPreview(){ if(PREVIEW){ try{ PREVIEW.bus.gain.setTargetAtTime(0,ACTX.currentTime,0.03); setTimeout(((b)=>()=>{try{b.disconnect();}catch(e){}})(PREVIEW.bus),200);}catch(e){} clearTimeout(PREVIEW.timer); cancelAnimationFrame(PREVIEW.raf); PREVIEW=null; $$(".song").forEach(x=>x.classList.remove("playing")); $$("[data-play]").forEach(b=>b.textContent=t("d.listen")); $("#previewBtn").textContent=t("studio.listen"); $("#stProg").style.width="0"; highlightLine(-1);} }
+function playSong(song, opts, onTick){
+  const c = ctx(); if(!c) return toast(t("d.nosupport"));
+  stopPreview();
+  const t0 = c.currentTime + 0.08, r = scheduleSong(c, c.destination, song, t0, opts);
+  PREVIEW = { bus:r.bus, id:song.id, t0, dur:r.duration };
+  PREVIEW.timer = setTimeout(stopPreview, (r.duration+0.6)*1000);
+  const tick = () => { if(!PREVIEW) return; const el = c.currentTime - t0; if(onTick) onTick(el, r); PREVIEW.raf = requestAnimationFrame(tick); };
+  tick();
+  return r;
+}
+function songArt(s){
+  let h = ""; const seed = parseInt(fnv1a(s.id),36);
+  for(let i=0;i<28;i++){ const v = 18 + ((seed>>(i%24)) & 15)*5 + (s.melody[i%s.melody.length].n % 12)*2; const hue = s.mode==="minor" ? 300+(i*3)%60 : 170+(i*3)%50;
+    h += `<i style="height:${clamp(v,10,100)}%;background:hsl(${hue} 85% 60%)"></i>`; }
+  return h;
+}
+function renderSongs(){
+  const el = $("#songList"); if(!SONGS.length){ return; }
+  const today = SONGS[0].date, list = SONGS.filter(s => GENRE==="all" || s.genre===GENRE);
+  el.innerHTML = list.slice(0, SHOWN).map(s => `
+    <article class="panel song${PREVIEW&&PREVIEW.id===s.id?" playing":""}" data-id="${s.id}">
+      <div class="art">${songArt(s)}</div>
+      <h3>${esc(s.title[LANG])}</h3>
+      <div class="meta">${s.date===today?`<span class="new">${t("d.new")}</span>`:""}<span>${esc(s.genre_name[LANG])}</span><span>${s.bpm} BPM</span><span>${keyName(s.tonic, s.mode)}</span><span>${s.progression.join(" – ")}</span></div>
+      <div class="acts"><button class="btn ghost small" data-play="${s.id}">${PREVIEW&&PREVIEW.id===s.id?t("d.stop"):t("d.listen")}</button><button class="btn primary small" data-sing="${s.id}">${t("d.sing")}</button></div>
+    </article>`).join("");
+  $("#moreBtn").style.display = list.length > SHOWN ? "" : "none";
+  el.querySelectorAll("[data-play]").forEach(b => b.onclick = () => {
+    const s = SONGS.find(x=>x.id===b.dataset.play);
+    if(PREVIEW && PREVIEW.id===s.id){ stopPreview(); return; }
+    playSong(s, { loops:1, guide:true, transpose:suggestTranspose(s) });
+    b.textContent = t("d.stop"); b.closest(".song").classList.add("playing");
+  });
+  el.querySelectorAll("[data-sing]").forEach(b => b.onclick = () => { selectSong(b.dataset.sing, true); });
+}
+function esc(x){ return String(x).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+/* =========================================================
+   ESCANER VOCAL
+   ========================================================= */
+const SCAN_SECONDS = 15;
+let SCAN = null;
+const scope = $("#scope"), sctx = scope.getContext("2d");
+function sizeScope(){ const r = scope.getBoundingClientRect(); const d = Math.min(window.devicePixelRatio||1, 2); scope.width = Math.max(300, r.width*d); scope.height = 280*d; drawScope(null, []); }
+function drawScope(wave, trail){
+  const W = scope.width, H = scope.height, d = W/1200;
+  sctx.fillStyle = "#05070a"; sctx.fillRect(0,0,W,H);
+  // rejilla de notas (piano roll)
+  const lo = 40, hi = 84, y = m => H - (m-lo)/(hi-lo)*H;
+  sctx.font = `${11*Math.max(d,0.8)}px ui-monospace,monospace`;
+  for(let m=lo; m<=hi; m++){
+    const black = [1,3,6,8,10].includes(m%12);
+    sctx.fillStyle = black ? "rgba(255,255,255,.015)" : "rgba(255,255,255,.035)";
+    sctx.fillRect(0, y(m+0.5), W, (H/(hi-lo)));
+    if(m%12===0){ sctx.fillStyle="rgba(255,255,255,.28)"; sctx.fillText(noteName(m), 8, y(m)-2); sctx.fillStyle="rgba(255,255,255,.08)"; sctx.fillRect(0,y(m),W,1); }
+  }
+  // forma de onda
+  if(wave){
+    sctx.strokeStyle = "rgba(34,211,238,.55)"; sctx.lineWidth = 1.5*d; sctx.beginPath();
+    const n = wave.length; for(let i=0;i<n;i+=2){ const xx = i/n*W, yy = H/2 + wave[i]*H*0.9; i?sctx.lineTo(xx,yy):sctx.moveTo(xx,yy); } sctx.stroke();
+  }
+  // estela de tono
+  if(trail.length){
+    const n = trail.length, span = 300;
+    sctx.lineWidth = 4*d; sctx.lineCap = "round";
+    for(let i=1;i<n;i++){ const a = trail[i-1], b = trail[i]; if(!a.m || !b.m || Math.abs(a.m-b.m)>2) continue;
+      const x1 = W - (n-i+1)/span*W, x2 = W - (n-i)/span*W; if(x2<0) continue;
+      const off = Math.abs(b.m - Math.round(b.m));
+      sctx.strokeStyle = off<0.15 ? "#3ddc84" : off<0.3 ? "#f5b942" : "#ff2e7e";
+      sctx.beginPath(); sctx.moveTo(x1,y(a.m)); sctx.lineTo(x2,y(b.m)); sctx.stroke(); }
+  }
+}
+function setRing(frac){ $("#ring").style.strokeDashoffset = 496.4*(1-frac); }
+async function startScan(){
+  $("#scanErr").textContent = "";
+  if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){ $("#scanErr").textContent = t("d.nosupport"); return; }
+  const c = ctx(); if(!c){ $("#scanErr").textContent = t("d.nosupport"); return; }
+  let stream;
+  try{ stream = await navigator.mediaDevices.getUserMedia({ audio:{ echoCancellation:false, noiseSuppression:false, autoGainControl:false } }); }
+  catch(e){ $("#scanErr").textContent = t("d.micerr"); return; }
+  stopPreview();
+  const src = c.createMediaStreamSource(stream), an = c.createAnalyser(); an.fftSize = 2048; src.connect(an);
+  SCAN = { stream, an, src, t0: performance.now(), frames: [], trail: [], buf: new Float32Array(2048) };
+  $("#scanBtn").classList.add("on"); $("#scanHint").textContent = t("d.listening");
+  const loop = () => {
+    if(!SCAN) return;
+    const el = (performance.now()-SCAN.t0)/1000;
+    an.getFloatTimeDomainData(SCAN.buf);
+    const p = detectPitch(SCAN.buf, c.sampleRate);
+    const voiced = p.f && p.c > 0.8;
+    const m = voiced ? ftom(p.f) : 0;
+    if(voiced) SCAN.frames.push({ m, c:p.c, rms:p.rms, t:el });
+    SCAN.trail.push({ m }); if(SCAN.trail.length > 300) SCAN.trail.shift();
+    drawScope(SCAN.buf, SCAN.trail);
+    if(voiced){
+      const cents = Math.round((m - Math.round(m))*100);
+      $("#roNote").textContent = noteName(m); $("#roHz").textContent = p.f.toFixed(1)+" Hz";
+      $("#roCents").textContent = (cents>0?"+":"")+cents+" ¢"; $("#centsNeedle").style.left = (50+cents)+"%";
+    }
+    const left = Math.max(0, SCAN_SECONDS - el);
+    $("#scanTimer").textContent = "0:" + String(Math.ceil(left)).padStart(2,"0");
+    setRing(el/SCAN_SECONDS);
+    ["#sp1","#sp2","#sp3"].forEach((s,i)=>$(s).classList.toggle("on", el>=i*5 && el<(i+1)*5));
+    if(el >= SCAN_SECONDS){ stopScan(true); return; }
+    SCAN.raf = requestAnimationFrame(loop);
+  };
+  loop();
+}
+function stopScan(analyze){
+  if(!SCAN) return; const s = SCAN; SCAN = null;
+  cancelAnimationFrame(s.raf); s.stream.getTracks().forEach(tr=>tr.stop()); try{ s.src.disconnect(); }catch(e){}
+  $("#scanBtn").classList.remove("on"); setRing(0); $("#scanTimer").textContent = "0:"+SCAN_SECONDS; $$(".steps span").forEach(x=>x.classList.remove("on"));
+  $("#scanHint").textContent = t("scan.hint");
+  if(analyze){ const r = analyzeScan(s.frames); if(!r){ $("#scanErr").textContent = t("d.tooshort"); return; } LAST_SCAN = r; store("vdna_scan", JSON.stringify(r)); showResult(r, true); renderStudio(); }
+}
+function percentile(a, p){ const s=[...a].sort((x,y)=>x-y); return s[Math.min(s.length-1, Math.max(0, Math.round(p*(s.length-1))))]; }
+function analyzeScan(frames){
+  if(frames.length < 40) return null;
+  const ms = frames.map(f=>f.m);
+  // segmentos de nota sostenida
+  const segs = []; let cur = [frames[0]];
+  for(let i=1;i<frames.length;i++){ const f=frames[i], p=cur[cur.length-1];
+    if(Math.abs(f.m-p.m) < 0.45 && f.t - p.t < 0.12) cur.push(f); else { if(cur.length>=8) segs.push(cur); cur=[f]; } }
+  if(cur.length>=8) segs.push(cur);
+  let tuneErr = 30, jitter = 40;
+  if(segs.length){
+    let te=0, ji=0, w=0;
+    for(const s of segs){ const mm = s.map(f=>f.m), med = percentile(mm,0.5); const dev = Math.abs(med-Math.round(med))*100;
+      const mean = mm.reduce((a,b)=>a+b,0)/mm.length, sd = Math.sqrt(mm.reduce((a,b)=>a+(b-mean)*(b-mean),0)/mm.length)*100;
+      te += dev*s.length; ji += sd*s.length; w += s.length; }
+    tuneErr = te/w; jitter = ji/w;
+  }
+  const lo = percentile(ms,0.04), hi = percentile(ms,0.96), span = hi-lo, med = percentile(ms,0.5);
+  const clar = frames.reduce((a,f)=>a+f.c,0)/frames.length;
+  const s1 = Math.round(clamp(100 - tuneErr*2.4, 0, 100));
+  const s2 = Math.round(clamp(100 - (jitter-6)*2.6, 0, 100));
+  const s3 = Math.round(clamp(span/24*100, 0, 100));
+  const s4 = Math.round(clamp((clar-0.8)/0.17*100, 0, 100));
+  const total = Math.round(s1*0.35 + s2*0.25 + s3*0.2 + s4*0.2);
+  const vt = med<=50?"bs":med<=55?"br":med<=59?"tn":med<=63?"ct":med<=67?"mz":"sp";
+  return { total, s:[s1,s2,s3,s4], lo:Math.round(lo), hi:Math.round(hi), med:Math.round(med), span:Math.round(span), vt, date:new Date().toISOString().slice(0,10) };
+}
+function showResult(r, animate){
+  const box = $("#result"); box.classList.add("show");
+  const lvl = r.total<40?"d.l1":r.total<60?"d.l2":r.total<75?"d.l3":r.total<88?"d.l4":"d.l5";
+  $("#resLevel").textContent = t(lvl);
+  $("#resType").textContent = t("d.vt."+r.vt);
+  $("#resRange").textContent = `${noteName(r.lo)} – ${noteName(r.hi)} · ${r.span} ${t("d.semis")}`;
+  $("#resCenter").textContent = noteName(r.med);
+  const names = [t("res.m1"),t("res.m2"),t("res.m3"),t("res.m4")];
+  r.s.forEach((v,i)=>{ $("#m"+(i+1)).style.width = v+"%"; $("#m"+(i+1)+"v").textContent = v+"/100"; });
+  const bi = r.s.indexOf(Math.max(...r.s)), wi = r.s.indexOf(Math.min(...r.s));
+  $("#resTip").textContent = t("d.tipLow", { best:names[bi].toLowerCase(), worst:names[wi].toLowerCase() });
+  $("#gArc").style.strokeDashoffset = 603.2*(1-r.total/100);
+  if(animate){ let v=0; const step=()=>{ v=Math.min(r.total, v+Math.max(1,Math.round(r.total/40))); $("#gVal").textContent=v; if(v<r.total) requestAnimationFrame(step); }; step(); box.scrollIntoView({behavior:"smooth", block:"start"}); }
+  else $("#gVal").textContent = r.total;
+}
+function sendRanking(){
+  if(!LAST_SCAN) return;
+  const alias = ($("#alias").value||"").trim();
+  if(!/^[A-Za-z0-9]{2,14}$/.test(alias)){ toast(t("d.aliasErr")); return; }
+  if(!CONFIG.telegramBot){ toast(t("d.rankSoon")); return; }
+  const d = new Date(), ds = d.getFullYear()+String(d.getMonth()+1).padStart(2,"0")+String(d.getDate()).padStart(2,"0");
+  const sc = String(LAST_SCAN.total), chk = fnv1a(`${alias}|${sc}|${LAST_SCAN.vt}|${ds}`);
+  const payload = `v1-${alias}-${sc}-${LAST_SCAN.vt}-${ds}-${chk}`;
+  window.open(`https://t.me/${CONFIG.telegramBot}?start=${payload}`, "_blank", "noopener");
+}
+async function shareResult(){
+  if(!LAST_SCAN) return;
+  const text = t("d.shareText", { s:LAST_SCAN.total, t:t("d.vt."+LAST_SCAN.vt) }), url = location.href.split("#")[0];
+  if(navigator.share){ try{ await navigator.share({ title:"Vocal DNA Studio", text, url }); }catch(e){} }
+  else { try{ await navigator.clipboard.writeText(text+" "+url); toast(t("d.copied")); }catch(e){ toast(text); } }
+}
+
+/* =========================================================
+   ESTUDIO
+   ========================================================= */
+function songCenter(s){ const ns = s.melody.map(n=>n.n); return percentile(ns,0.5); }
+function suggestTranspose(s){
+  if(!LAST_SCAN) return 0;
+  let d = Math.round(LAST_SCAN.med + 1 - songCenter(s));
+  while(d > 7) d -= 12; while(d < -7) d += 12;
+  return d;
+}
+function selectSong(id, scroll){
+  stopPreview(); CUR = SONGS.find(s=>s.id===id); if(!CUR) return;
+  $("#transpose").value = suggestTranspose(CUR); $("#trOut").textContent = $("#transpose").value;
+  renderStudio();
+  if(scroll){ $("#studio").scrollIntoView({behavior:"smooth"}); if(LAST_SCAN) $("#stStatus").textContent = t("d.trsug",{n:$("#transpose").value}); }
+}
+function renderStudio(){
+  const sel = $("#stSelect");
+  sel.innerHTML = SONGS.map(s=>`<option value="${s.id}"${CUR&&CUR.id===s.id?" selected":""}>${esc(s.title[LANG])} · ${esc(s.genre_name[LANG])}</option>`).join("");
+  if(!CUR) return;
+  const tr = +$("#transpose").value;
+  $("#stTitle").textContent = CUR.title[LANG];
+  $("#stMeta").innerHTML = `<span>${esc(CUR.genre_name[LANG])}</span><span>${CUR.bpm} BPM</span><span>${keyName(CUR.tonic+tr, CUR.mode)}</span><span>${CUR.progression.join(" – ")}</span>`;
+  $("#lyricsBox").innerHTML = CUR.lyrics[LANG].map((l,i)=>`<p data-line="${i}">${esc(l)}</p>`).join("");
+}
+function highlightLine(i){ $$("#lyricsBox p").forEach(p=>p.classList.toggle("on", +p.dataset.line===i)); }
+function studioTick(el, r){
+  const total = r.duration, frac = clamp(el/total,0,1); $("#stProg").style.width = (frac*100)+"%";
+  if(el>=0){ const bar = Math.floor(el / r.barLen); highlightLine(Math.floor(bar/2) % CUR.lyrics[LANG].length); }
+}
+
+let REC = null, TAKE = null;
+async function startRecording(){
+  if(!CUR) return;
+  if(REC){ finishRecording(true); return; }
+  if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){ toast(t("d.nosupport")); return; }
+  const c = ctx(); if(!c){ toast(t("d.nosupport")); return; }
+  let stream;
+  try{ stream = await navigator.mediaDevices.getUserMedia({ audio:{ echoCancellation:false, noiseSuppression:false, autoGainControl:false } }); }
+  catch(e){ toast(t("d.micerr")); return; }
+  stopPreview(); $("#mixer").classList.remove("show");
+  const sr = c.sampleRate, bs = 4096, src = c.createMediaStreamSource(stream), proc = c.createScriptProcessor(bs, 1, 1), mute = c.createGain(); mute.gain.value = 0;
+  const chunks = []; let firstPT = null;
+  proc.onaudioprocess = e => { if(firstPT===null) firstPT = e.playbackTime; chunks.push(new Float32Array(e.inputBuffer.getChannelData(0))); };
+  src.connect(proc); proc.connect(mute); mute.connect(c.destination);
+  const opts = { loops:+$("#loops").value, guide:$("#guide").checked, transpose:+$("#transpose").value };
+  const step = 60/CUR.bpm/4, barLen = step*16, t0 = c.currentTime + 0.3 + barLen; // un compas de cuenta atras
+  for(let i=0;i<4;i++) click(c, c.destination, t0 - barLen + i*step*4, i===0);
+  const r = scheduleSong(c, c.destination, CUR, t0, opts);
+  REC = { stream, src, proc, mute, chunks, get firstPT(){return firstPT;}, t0, r, opts, sr, bs, song:CUR, inLat:(stream.getAudioTracks()[0].getSettings().latency||0.01) };
+  $("#recBtn").textContent = t("d.stop"); $("#stBadge").textContent = "REC"; $("#stBadge").style.color = "var(--red)";
+  const tick = () => { if(!REC) return; const el = c.currentTime - t0;
+    if(el < 0) $("#stStatus").textContent = t("d.countin",{ n: Math.ceil(-el/(step*4)) }); else $("#stStatus").textContent = t("d.recording");
+    studioTick(el, r); if(el >= r.duration + 0.4){ finishRecording(false); return; } REC.raf = requestAnimationFrame(tick); };
+  tick();
+}
+function finishRecording(cancel){
+  const R = REC; if(!R) return; REC = null; cancelAnimationFrame(R.raf);
+  try{ R.r.bus.gain.setTargetAtTime(0, ACTX.currentTime, 0.02); }catch(e){}
+  setTimeout(()=>{ try{ R.r.bus.disconnect(); }catch(e){} }, 300);
+  R.stream.getTracks().forEach(tr=>tr.stop()); try{ R.src.disconnect(); R.proc.disconnect(); R.mute.disconnect(); }catch(e){}
+  $("#recBtn").textContent = t("studio.rec"); $("#stBadge").textContent = t("studio.ready"); $("#stBadge").style.color = ""; highlightLine(-1); $("#stProg").style.width="0";
+  if(cancel || !R.chunks.length){ $("#stStatus").textContent = t("studio.tip"); return; }
+  const len = R.chunks.reduce((a,c)=>a+c.length,0), raw = new Float32Array(len); let o=0; for(const c of R.chunks){ raw.set(c,o); o+=c.length; }
+  // posicion estimada del inicio de la base dentro de la grabacion
+  const outLat = (ACTX.outputLatency||0) + (ACTX.baseLatency||0);
+  const capStart = R.firstPT - 2*R.bs/R.sr; // momento aproximado de la primera muestra captada
+  const est = Math.round((R.t0 - capStart + outLat + R.inLat) * R.sr);
+  TAKE = { raw, sr:R.sr, est, song:R.song, opts:R.opts, beat:null, autoSync:null, phones:$("#phones").checked };
+  processTake();
+}
+
+/* Afinacion automatica: deteccion de tono + recolocacion por periodos (TD-PSOLA) */
+function autotune(x, sr, song, transpose, strength, natural){
+  const W = 2048, H = 512, len = x.length, frames = Math.floor((len - W) / H) + 1;
+  if(frames < 2 || strength <= 0) return x;
+  const tonic = song.tonic + transpose, sc = SCALES[song.mode];
+  const ratios = new Float32Array(frames), periods = new Float32Array(frames);
+  const nearest = m => { let best=m, bd=99; for(let k=Math.floor(m)-2;k<=Math.ceil(m)+2;k++){ if(sc.includes(((k-tonic)%12+12)%12)){ const d=Math.abs(k-m); if(d<bd){bd=d;best=k;} } } return best; };
+  let r = 1; const smooth = 0.2 + natural*0.7; // mas naturalidad = correccion mas suave
+  for(let f=0; f<frames; f++){
+    const p = detectPitch(x.subarray(f*H, f*H+W), sr);
+    let target = 1;
+    if(p.f && p.c > 0.75){ const m = ftom(p.f); target = Math.pow(2, (nearest(m) - m) * strength / 12); periods[f] = sr / p.f; }
+    r = r*smooth + target*(1-smooth); ratios[f] = r;
+  }
+  const frameAt = i => Math.min(frames-1, Math.max(0, Math.round((i - W/2)/H)));
+  // marcas de analisis: una por periodo en la voz, fijas en silencios y consonantes
+  const marks = []; let i = 0;
+  while(i < len){
+    const f = frameAt(i), P = periods[f];
+    if(P){
+      const rad = Math.floor(P/3); let best = i, bv = -1;
+      for(let k=Math.max(0,i-rad); k<Math.min(len,i+rad); k++){ if(x[k] > bv){ bv = x[k]; best = k; } }
+      const last = marks.length ? marks[marks.length-1].p : -1e9;
+      if(best <= last + P*0.5) best = Math.round(last + P);
+      marks.push({ p:best, P:Math.round(P), r:ratios[f] }); i = best + Math.round(P);
+    } else { marks.push({ p:i, P:256, r:1 }); i += 256; }
+  }
+  // sintesis: se copian los periodos a la nueva distancia (= nuevo tono) sin cambiar la duracion
+  const y = new Float32Array(len), norm = new Float32Array(len);
+  let ts = marks[0].p, ai = 0;
+  while(ts < len){
+    while(ai+1 < marks.length && Math.abs(marks[ai+1].p - ts) <= Math.abs(marks[ai].p - ts)) ai++;
+    const mk = marks[ai], L = mk.P, o = Math.round(ts);
+    for(let n=-L; n<L; n++){ const si = mk.p+n, oi = o+n; if(si<0||si>=len||oi<0||oi>=len) continue;
+      const w = 0.5 + 0.5*Math.cos(Math.PI*n/L); y[oi] += w*x[si]; norm[oi] += w; }
+    ts += mk.P / mk.r;
+  }
+  for(let k=0;k<len;k++) y[k] = y[k] / Math.max(norm[k], 0.5);
+  return y;
+}
+function envelope(x, sr, from, secs){ const hop = Math.round(sr/500), n = Math.floor(Math.min(x.length-from, secs*sr)/hop), e = new Float32Array(Math.max(0,n)); for(let i=0;i<n;i++){ let s=0; for(let j=0;j<hop;j++){ const v=x[from+i*hop+j]||0; s+=v*v; } e[i]=Math.sqrt(s/hop); } return e; }
+function findSync(raw, beatMono, sr, est){
+  // si la base se cuela en el microfono, busca el desfase exacto comparando envolventes
+  const eB = envelope(beatMono, sr, 0, 8), maxShift = 150; // +-300 ms a 500 Hz
+  const from = Math.max(0, est - maxShift*Math.round(sr/500)), eR = envelope(raw, sr, from, 8 + 0.6);
+  const mean = a => a.reduce((s,v)=>s+v,0)/(a.length||1), mb = mean(eB), mr = mean(eR);
+  let best = 0, bestC = -1;
+  for(let k=0;k<=2*maxShift;k++){ let num=0, da=0, db=0;
+    for(let i=0;i<eB.length && i+k<eR.length;i++){ const a=eB[i]-mb, b=eR[i+k]-mr; num+=a*b; da+=a*a; db+=b*b; }
+    const c = num/Math.sqrt(da*db+1e-12); if(c>bestC){ bestC=c; best=k; } }
+  if(bestC < 0.35) return null;
+  return from + best*Math.round(sr/500);
+}
+function makeIR(c, secs){ const len = Math.floor(c.sampleRate*secs), b = c.createBuffer(2, len, c.sampleRate), pre = Math.floor(c.sampleRate*0.02);
+  for(let ch=0; ch<2; ch++){ const d = b.getChannelData(ch); for(let i=pre;i<len;i++){ d[i] = (Math.random()*2-1) * Math.pow(1-(i-pre)/(len-pre), 3.2) * 0.6; } } return b; }
+async function renderBeat(song, opts, sr){
+  const dur = 60/song.bpm/4*16*song.bars*opts.loops + 1.5;
+  const oc = new OfflineAudioContext(2, Math.ceil(dur*sr), sr);
+  scheduleSong(oc, oc.destination, song, 0, { ...opts, guide:false });
+  return oc.startRendering();
+}
+async function processTake(){
+  if(!TAKE) return;
+  $("#stStatus").textContent = t("d.processing"); $("#remixBtn").disabled = true;
+  await new Promise(r=>setTimeout(r,40));
+  const T = TAKE, sr = T.sr;
+  if(!T.beat){ T.beat = await renderBeat(T.song, T.opts, sr); }
+  const beatL = T.beat.getChannelData(0);
+  if(T.autoSync === null){ const s = T.phones ? null : findSync(T.raw, beatL, sr, T.est); T.autoSync = s===null ? T.est : s; T.syncMsg = s===null ? null : Math.round((s - T.est)/sr*1000); }
+  const nudge = Math.round(+$("#k_sync").value/1000*sr), start = Math.max(0, T.autoSync + nudge);
+  const len = T.beat.length, v = new Float32Array(len); v.set(T.raw.subarray(start, Math.min(T.raw.length, start+len)));
+  // normalizar voz
+  let pk = 0; for(let i=0;i<v.length;i++) pk = Math.max(pk, Math.abs(v[i])); if(pk>0){ const g = 0.8/pk; for(let i=0;i<v.length;i++) v[i]*=g; }
+  const tuned = autotune(v, sr, T.song, T.opts.transpose, +$("#k_tune").value/100, +$("#k_speed").value/100);
+  const oc = new OfflineAudioContext(2, len, sr);
+  const vb = oc.createBuffer(1, len, sr); vb.copyToChannel(tuned, 0);
+  const vs = oc.createBufferSource(); vs.buffer = vb;
+  const hp = oc.createBiquadFilter(); hp.type="highpass"; hp.frequency.value=95; hp.Q.value=0.7;
+  const mud = oc.createBiquadFilter(); mud.type="peaking"; mud.frequency.value=300; mud.Q.value=1; mud.gain.value=-3;
+  const pres = oc.createBiquadFilter(); pres.type="peaking"; pres.frequency.value=3200; pres.Q.value=0.9; pres.gain.value=3;
+  const air = oc.createBiquadFilter(); air.type="highshelf"; air.frequency.value=9500; air.gain.value=3;
+  const comp = oc.createDynamicsCompressor(); comp.threshold.value=-22; comp.ratio.value=4; comp.attack.value=0.005; comp.release.value=0.12; comp.knee.value=6;
+  const vg = oc.createGain(); vg.gain.value = 1.15 * (+$("#k_voice").value/100);
+  const conv = oc.createConvolver(); conv.buffer = makeIR(oc, 2.4); const wet = oc.createGain(); wet.gain.value = 0.9 * (+$("#k_rev").value/100);
+  const bs = oc.createBufferSource(); bs.buffer = T.beat; const bg = oc.createGain(); bg.gain.value = +$("#k_beat").value/100;
+  const master = oc.createDynamicsCompressor(); master.threshold.value=-4; master.ratio.value=12; master.attack.value=0.003; master.release.value=0.1;
+  vs.connect(hp).connect(mud).connect(pres).connect(air).connect(comp).connect(vg);
+  vg.connect(master); vg.connect(conv).connect(wet).connect(master);
+  bs.connect(bg).connect(master); master.connect(oc.destination);
+  vs.start(0); bs.start(0);
+  const out = await oc.startRendering();
+  const wav = encodeWAV(out); if(T.url) URL.revokeObjectURL(T.url); T.url = URL.createObjectURL(wav);
+  const a = $("#mixAudio"); a.src = T.url;
+  const dl = $("#dlBtn"); dl.href = T.url; dl.download = `vocal-dna-${T.song.id}.wav`;
+  T.rawVoice = v;
+  $("#mixer").classList.add("show"); $("#remixBtn").disabled = false;
+  $("#mixInfo").textContent = t("d.mixinfo",{ d:(out.length/sr).toFixed(1), sr }) + (T.syncMsg!==null && T.syncMsg!==undefined ? " · " + t("d.synced",{ms:T.syncMsg}) : "");
+  $("#stStatus").textContent = t("d.done");
+  $("#mixer").scrollIntoView({ behavior:"smooth", block:"start" });
+}
+function encodeWAV(buf){
+  const ch = buf.numberOfChannels, sr = buf.sampleRate, n = buf.length, ab = new ArrayBuffer(44 + n*ch*2), dv = new DataView(ab);
+  const ws = (o,s) => { for(let i=0;i<s.length;i++) dv.setUint8(o+i, s.charCodeAt(i)); };
+  ws(0,"RIFF"); dv.setUint32(4, 36+n*ch*2, true); ws(8,"WAVE"); ws(12,"fmt "); dv.setUint32(16,16,true); dv.setUint16(20,1,true); dv.setUint16(22,ch,true);
+  dv.setUint32(24,sr,true); dv.setUint32(28,sr*ch*2,true); dv.setUint16(32,ch*2,true); dv.setUint16(34,16,true); ws(36,"data"); dv.setUint32(40,n*ch*2,true);
+  const data = []; for(let c=0;c<ch;c++) data.push(buf.getChannelData(c));
+  let o = 44; for(let i=0;i<n;i++) for(let c=0;c<ch;c++){ const s = clamp(data[c][i], -1, 1); dv.setInt16(o, s<0 ? s*0x8000 : s*0x7FFF, true); o+=2; }
+  return new Blob([ab], { type:"audio/wav" });
+}
+let RAWPLAY = null;
+function playRaw(){
+  if(RAWPLAY){ try{ RAWPLAY.stop(); }catch(e){} RAWPLAY=null; $("#rawBtn").textContent = t("mix.raw"); return; }
+  if(!TAKE || !TAKE.rawVoice) return; const c = ctx(); const b = c.createBuffer(1, TAKE.rawVoice.length, TAKE.sr); b.copyToChannel(TAKE.rawVoice,0);
+  const s = c.createBufferSource(); s.buffer = b; s.connect(c.destination); s.start(); s.onended = () => { if(RAWPLAY===s){ RAWPLAY=null; $("#rawBtn").textContent = t("mix.raw"); } }; RAWPLAY = s; $("#rawBtn").textContent = t("d.rawStop");
+}
+
+/* =========================================================
+   RANKING Y TELEGRAM
+   ========================================================= */
+function renderRanking(){
+  if(!RANK) return;
+  const tb = $("#talentBox"), td = RANK.talent_of_day;
+  if(td){ tb.innerHTML = `<div class="crown">👑</div><div><span class="tag" style="color:var(--gold)">${t("d.talent")}</span><h3>${esc(td.name)} · ${td.score}/100</h3><p class="muted">${t("d.vt."+td.voice)}</p></div>`; }
+  else { tb.innerHTML = `<div class="crown">🎙️</div><div><h3>${t("d.noTalent")}</h3><p class="muted">${t("d.noTalentSub")}</p></div>`; }
+  const e = RANK.entries || [];
+  $("#rankBody").innerHTML = e.length ? e.slice(0,25).map((x,i)=>`<tr class="${i===0?"top1":""}"><td class="pos">${i+1}</td><td><b>${esc(x.name)}</b></td><td>${t("d.vt."+x.voice)}</td><td><b>${x.score}</b>/100</td><td class="muted">${x.date}</td></tr>`).join("")
+    : `<tr><td colspan="5" class="empty">${t("d.noRank")}</td></tr>`;
+  if(RANK.updated) $("#rankUpd").textContent = t("d.updated",{ d:new Date(RANK.updated).toLocaleString(LANG==="es"?"es-ES":"en-US",{dateStyle:"medium",timeStyle:"short"}) });
+}
+function renderTelegram(){
+  const ch = LANG==="es" ? CONFIG.channelES : (CONFIG.channelEN || CONFIG.channelES);
+  $("#tgFoot").innerHTML = ch ? `<a class="btn ghost small" href="https://t.me/${ch}" target="_blank" rel="noopener">${t("d.tgJoin")}</a>` : "";
+}
+
+/* =========================================================
+   ARRANQUE
+   ========================================================= */
+(function init(){
+  $("#yr").textContent = new Date().getFullYear();
+  const eq = $("#heroEq"); for(let i=0;i<32;i++){ const b=document.createElement("i"); b.style.animationDelay=(-Math.random()*1.2)+"s"; b.style.animationDuration=(0.6+Math.random()*0.9)+"s"; eq.appendChild(b); }
+  const qs = new URLSearchParams(location.search).get("lang");
+  const saved = store("vdna_lang");
+  LANG = qs==="en"||qs==="es" ? qs : saved || ((navigator.language||"es").toLowerCase().startsWith("es") ? "es" : "en");
+  $$(".lang button").forEach(b => b.onclick = () => applyLang(b.dataset.lang));
+  $("#burger").onclick = () => $("#nav").classList.toggle("open");
+  $$("#nav a").forEach(a => a.addEventListener("click", () => $("#nav").classList.remove("open")));
+  $("#scanBtn").onclick = () => SCAN ? stopScan(true) : startScan();
+  $("#againBtn").onclick = () => { $("#scanner").scrollIntoView({behavior:"smooth"}); };
+  $("#shareBtn").onclick = shareResult;
+  $("#rankBtn").onclick = sendRanking;
+  $("#moreBtn").onclick = () => { SHOWN += 9; renderSongs(); };
+  $("#stSelect").onchange = e => selectSong(e.target.value, false);
+  $("#transpose").oninput = e => { $("#trOut").textContent = e.target.value; renderStudio(); };
+  $("#previewBtn").onclick = () => { if(!CUR) return; if(PREVIEW && PREVIEW.id===CUR.id){ stopPreview(); return; }
+    playSong(CUR, { loops:+$("#loops").value, guide:$("#guide").checked, transpose:+$("#transpose").value }, studioTick); $("#previewBtn").textContent = t("d.stop"); };
+  $("#recBtn").onclick = startRecording;
+  $("#remixBtn").onclick = processTake;
+  $("#rawBtn").onclick = playRaw;
+  [["k_tune","o_tune","%"],["k_speed","o_speed","%"],["k_rev","o_rev","%"],["k_voice","o_voice","%"],["k_beat","o_beat","%"],["k_sync","o_sync"," ms"]].forEach(([k,o,u]) => { $("#"+k).oninput = e => $("#"+o).textContent = e.target.value + u; });
+  window.addEventListener("resize", sizeScope); sizeScope();
+  // menu activo segun la seccion visible
+  const io = new IntersectionObserver(es => es.forEach(en => { if(en.isIntersecting){ $$("#nav a").forEach(a => a.classList.toggle("on", a.getAttribute("href")==="#"+en.target.id)); } }), { rootMargin:"-45% 0px -50% 0px" });
+  ["scanner","songs","studio","ranking","legal"].forEach(id => io.observe(document.getElementById(id)));
+  if(CONFIG.cloudflareToken){ const s=document.createElement("script"); s.defer=true; s.src="https://static.cloudflareinsights.com/beacon.min.js"; s.setAttribute("data-cf-beacon", JSON.stringify({token:CONFIG.cloudflareToken})); document.body.appendChild(s); }
+  applyLang(LANG);
+  if(LAST_SCAN) showResult(LAST_SCAN, false);
+  loadData();
+})();
+</script>
+</body>
+</html>
