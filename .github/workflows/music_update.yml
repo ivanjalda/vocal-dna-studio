@@ -1,0 +1,54 @@
+name: Motor diario Vocal DNA
+
+on:
+  schedule:
+    - cron: "17 7 * * *"   # todos los dias a las 08:17 (hora de Espana en invierno)
+  workflow_dispatch:        # boton "Run workflow" para lanzarlo a mano
+
+permissions:
+  contents: write
+
+concurrency:
+  group: motor-diario
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Preparar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Componer canciones y actualizar ranking
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: python scripts/music_catalog_engine.py
+
+      - name: Revision automatica de la web
+        run: python scripts/site_check.py
+
+      - name: Guardar los cambios
+        run: |
+          git config user.name "vocal-dna-bot"
+          git config user.email "vocal-dna-bot@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "Sin cambios"
+          else
+            git commit -m "Motor diario: canciones y ranking $(date -u +%Y-%m-%d)"
+            git pull --rebase
+            git push
+          fi
+
+      - name: Aviso en Telegram
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL_ES: ${{ secrets.TELEGRAM_CHANNEL_ES }}
+          TELEGRAM_CHANNEL_EN: ${{ secrets.TELEGRAM_CHANNEL_EN }}
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: python scripts/telegram_notifier.py
